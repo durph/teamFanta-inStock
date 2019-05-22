@@ -7,7 +7,7 @@ class Inventory extends Component{
         return(
             <>
                 <h1>Hello from Inventory</h1>
-                <h2>Test ID : {this.props.match.params.id}</h2>
+                <h2>Test ID : {this.props.match.params.inventoryId}</h2>
             </>
         )
 
