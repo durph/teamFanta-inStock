@@ -1,0 +1,101 @@
+// @media
+
+@mixin tablet {
+    @media (min-width: 768px) {
+        @content;
+    }
+}
+
+@mixin desktop {
+    @media (min-width: 1440px) {
+        @content;
+    }
+}
+
+// Stylesheet mixins
+
+@mixin hero-header {
+    font-size: 3.75rem;
+    line-height: 4.25rem;
+    font-family: $font-bold;
+}
+@mixin h1-header {
+    font-size: 2.25rem;
+    line-height: 2.75rem;
+    font-family: $font-bold;
+}
+@mixin h2-header {
+    font-size: 1.5rem;
+    line-height: 2rem;
+    font-family: $font-bold;
+}
+@mixin h3-subheader {
+    font-size: 1rem;
+    line-height: 1.5rem;
+    font-family: $font-demi-bold;
+}
+@mixin h4-paragraph-comments {
+    font-size: 0.875rem;
+    line-height: 1.375rem;
+    font-family: $font-reg;
+}
+@mixin h4-lists-contact-info {
+    font-size: 0.875rem;
+    line-height: 1.25rem;
+    font-family: $font-reg;
+}
+@mixin h5-labels {
+    font-size: 0.75rem;
+    line-height: 1.25rem;
+    font-family: $font-reg;
+    color: $text-label-style;
+    text-transform: uppercase;
+}
+
+// Mobile Text Styles
+
+@mixin m-h1-header {
+    font-size: 1.5rem;
+    line-height: 2rem;
+    font-family: $font-bold;
+}
+@mixin m-h2-subheader {
+    font-size: 0.875rem;
+    line-height: 1.375rem;
+    font-family: $font-demi-bold;
+}
+@mixin m-h4-paragraph {
+    font-size: 0.8125rem;
+    line-height: 1.125rem;
+    font-family: $font-reg;
+    color: $para-text;
+}
+@mixin m-h4-lists-contact-info {
+    font-size: 0.8125rem;
+    line-height: 1.125rem;
+    font-family: $font-reg;
+}
+@mixin m-h5-labels {
+    font-size: 0.75rem;
+    line-height: 1.25rem;
+    font-family: $font-reg;
+    color: $text-label-style;
+    text-transform: uppercase;
+}
+
+// Fonts
+
+@mixin font-faces {
+    @font-face {
+        font-family: 'Avenir Next Regular';
+        src: url('../../assets/_Global-Font/AvenirNextProLT/Linotype-AvenirNextLTPro-Regular.otf') format("opentype");
+    }
+    @font-face {
+        font-family: 'Avenir Next Demi Bold';
+        src: url('../../assets/_Global-Font/AvenirNextProLT/Linotype-AvenirNextLTPro-Demi.otf') format("opentype");
+    }
+    @font-face {
+        font-family: 'Avenir Next Bold';
+        src: url('../../assets/_Global-Font/AvenirNextProLT/Linotype-AvenirNextLTPro-Bold.otf') format("opentype");
+    }
+}
