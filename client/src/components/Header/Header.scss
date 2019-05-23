@@ -1,0 +1,39 @@
+
+
+.header {
+    &__container {
+        background-color: black;
+        height: 180px;
+        width: 100%;
+        display: flex;
+        flex-wrap: wrap;
+    }
+    
+    &__logo {
+        &-container {
+            height: 50%;
+            width: 100%;
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            align-items: center;
+        }
+
+        height: 100%;
+
+    }
+
+    &__link {
+        &-container {
+            height: 50%;
+            width: 100%;
+            padding: 0;
+            display: flex;
+        }
+
+        width: 50%;
+        height: 100%;
+        color: white;
+        list-style: none;
+    }
+}

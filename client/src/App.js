@@ -9,6 +9,7 @@ import {
 import Warehouse from './components/Warehouse/Warehouse.js'
 import Inventory from './components/Inventory/Inventory.js';
 import Errors from './components/Errors/Errors.js';
+import Header from './components/Header/Header';
 
 
 class App extends Component {
@@ -16,6 +17,7 @@ class App extends Component {
   render() {
     return (
     <Router>
+      <Header></Header>
       <Switch>
         <Route exact path="/warehouse/:warehouseId" component={Warehouse}/>
         <Route exact path ="/inventory/:inventoryId" component={Inventory}/>
