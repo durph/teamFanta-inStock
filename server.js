@@ -9,9 +9,8 @@ app.use(express.urlencoded({ extended: true }));
 
 app.use(cors());
 // respond with "hello world" when a GET request is made to the homepage
-app.get("/", function(req, res) {
-  res.send("hello world");
-});
+app.get("/", (req, res) => res.send("hello world"));
+
 app.use("/warehouse", warehouseRoutes);
 app.listen(port, function() {
   console.log(`app listening on port ${port}`);
