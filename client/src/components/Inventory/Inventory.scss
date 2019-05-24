@@ -1,89 +1,203 @@
-@import '../../styles/_global-mixins.scss';
-@import '../../styles/_global-variables.scss';
+@import "../../styles/_global-mixins.scss";
+@import "../../styles/_global-variables.scss";
 
 @include font-faces;
 
 .inventory {
+  width: 100%;
+  padding: 0 5vw;
 
-    &__header {
+  @include tablet {
+    padding: 0 3vw;
+  }
 
+  @include desktop {
+    padding: 0 12.5vw;
+  }
 
-        &-heading {
+  &__header {
+    margin-bottom: 2rem;
 
-            &-search {
-                width: 100%;
-                height: 100%;
-                border-radius: 4px;
-                border: 1px $text-field-border solid;
-                background-color: $text-field-background-fill;
-                padding: 0.5rem 0.5rem 0.5rem 2.5rem;
-                word-wrap: break-word;
-                white-space: normal;
-                background: url('../../assets/Icons/SVG/Icon-search.svg') no-repeat;
-                background-position: 0.5rem 50%;
-                @include m-h4-paragraph;
+    @include tablet {
+      display: flex;
+      flex-wrap: wrap;
+      margin-top: 3rem;
+    }
 
-                @include tablet {
-                    width: 32.25vw;
-                    margin-right: 1.5rem;
-                    @include h4-paragraph-comments;
-                }
+    &-heading {
+      @include m-h1-header;
+      margin: 2rem 0 1rem 0;
 
-                @include desktop {
-                    width: 18vw;
-                }
-            }
+      @include tablet {
+        @include h1-header;
+        width: 50%;
+        margin: 0;
+      }
+    }
+
+    &-search {
+      width: 80%;
+      height: 100%;
+      border-radius: 4px;
+      border: 1px $text-field-border solid;
+      background-color: $text-field-background-fill;
+      padding: 0.75rem 0.5rem 0.75rem 2.5rem;
+      word-wrap: break-word;
+      white-space: normal;
+      background: url("../../assets/Icons/SVG/Icon-search.svg") no-repeat;
+      background-position: 0.5rem 50%;
+      @include m-h4-paragraph;
+
+      @include tablet {
+        width: 30%;
+        margin-left: auto;
+        @include h4-paragraph-comments;
+      }
+
+      @include desktop {
+        // width: 18vw;
+      }
+    }
+
+    &-list {
+      display: none;
+
+      @include tablet {
+        list-style: none;
+        padding: 0;
+        width: 100%;
+        display: flex;
+        margin: 3rem 0 0;
+      }
+
+      &-heading {
+        @include h5-labels;
+        width: 17%;
+
+        &--wide {
+          width: 31%;
+        }
+      }
+    }
+  }
+
+  &__list {
+    &-container {
+    }
+
+    &-link {
+      text-decoration: none;
+    }
+
+    &-entry {
+      list-style: none;
+      padding: 0;
+      color: $para-text;
+      border-bottom: 1px solid $divider-color;
+      margin: 0;
+
+      @include tablet {
+        display: flex;
+        flex-wrap: wrap;
+        padding: 0 0 1.5rem;
+        margin: 1.5rem 0 0;
+      }
+
+      &-heading {
+        @include m-h5-labels;
+        margin-bottom: 1rem;
+
+        @include tablet {
+          display: none;
         }
 
-        &-list {
+        &--with-kebab {
+          display: flex;
+          justify-content: space-between;
+
+          @include tablet {
             display: none;
-
-            @include tablet {
-                display: initial;
-                list-style: none;
-            }
-
-            &-heading {
-                @include h5-labels;
-
-            }
+          }
         }
+
+        &-kebab {
+        }
+      }
+
+      &-item {
+        &-product {
+          @include m-h4-lists-contact-info;
+          font-weight: bold;
+          margin-bottom: 1rem;
+
+          @include tablet {
+            margin: 0 0 0.5rem;
+            width: 100%;
+            @include h4-lists-contact-info;
+          }
+        }
+
+        &-description {
+          @include m-h4-lists-contact-info;
+          margin-bottom: 1.5rem;
+
+          @include tablet {
+            margin: 0;
+            width: 31%;
+            @include h4-lists-contact-info;
+          }
+        }
+
+        margin-bottom: 1.5rem;
+        @include m-h4-lists-contact-info;
+
+        @include tablet {
+          margin: 0;
+          width: 17%;
+          @include h4-lists-contact-info;
+        }
+        &-kebab {
+          display: none;
+
+          @include tablet {
+            display: initial;
+            margin-left: -2rem;
+          }
+
+          @include desktop {
+            margin: 0;
+          }
+
+          &-img {
+          }
+        }
+      }
+    }
+  }
+
+  &__add-item {
+    background-color: $primary-cta;
+    height: 3.75rem;
+    width: 3.75rem;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: fixed;
+    right: 5vw;
+    bottom: 10%;
+    cursor: pointer;
+    
+    @include tablet {
+      right: 3vw;
     }
 
-    &__list {
-        &-container {
-
-        }
-
-        &-link {
-
-        }
-
-        &-entry {
-            list-style: none;
-
-            &-heading {
-
-                @include tablet {
-                    display: none;
-                }
-            }
-
-            &-item {
-                &-product {
-
-                }
-
-                &-desctiption {
-
-                }
-
-
-                
-            }
-        }
+    @include desktop {
+      right: 12.5vw;
     }
+    
+    &-img {
+      width: 1.25rem;
+    }
+  }
 }
-
-
-
