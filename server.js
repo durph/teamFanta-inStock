@@ -2,7 +2,7 @@ const express = require("express");
 const app = express();
 const cors = require("cors");
 const port = 8080;
-const warehouseRoutes = require("./routes/instock-routes");
+const warehouseRoutes = require("./routes/warehouse-routes");
 
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));

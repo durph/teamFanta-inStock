@@ -22,7 +22,7 @@ const postWarehouse = (req, res) => {
 };
 
 const getWarehouse = (req, res) => {
-  res.json(warehouse);
+  res.json(warehouses);
 };
 
 router.post("/", postWarehouse);
