@@ -53,10 +53,6 @@
         margin-left: auto;
         @include h4-paragraph-comments;
       }
-
-      @include desktop {
-        // width: 18vw;
-      }
     }
 
     &-list {
@@ -65,7 +61,7 @@
       @include tablet {
         list-style: none;
         padding: 0;
-        width: 100%;
+        width: 95%;
         display: flex;
         margin: 3rem 0 0;
       }
@@ -83,96 +79,7 @@
 
   &__list {
     &-container {
-    }
-
-    &-link {
-      text-decoration: none;
-    }
-
-    &-entry {
-      list-style: none;
-      padding: 0;
-      color: $para-text;
-      border-bottom: 1px solid $divider-color;
-      margin: 1.5REM 0 0;
-
-      @include tablet {
-        display: flex;
-        flex-wrap: wrap;
-        padding: 0 0 1.5rem;
-        margin: 1.5rem 0 0;
-      }
-
-      &-heading {
-        @include m-h5-labels;
-        margin-bottom: 1rem;
-
-        @include tablet {
-          display: none;
-        }
-
-        &--with-kebab {
-          display: flex;
-          justify-content: space-between;
-
-          @include tablet {
-            display: none;
-          }
-        }
-
-        &-kebab {
-        }
-      }
-
-      &-item {
-        &-product {
-          @include m-h4-lists-contact-info;
-          font-weight: bold;
-          margin-bottom: 1rem;
-
-          @include tablet {
-            margin: 0 0 0.5rem;
-            width: 100%;
-            @include h4-lists-contact-info;
-          }
-        }
-
-        &-description {
-          @include m-h4-lists-contact-info;
-          margin-bottom: 1.5rem;
-          padding-right: 2rem;
-
-          @include tablet {
-            margin: 0;
-            width: 31%;
-            @include h4-lists-contact-info;
-          }
-        }
-
-        margin-bottom: 1.5rem;
-        @include m-h4-lists-contact-info;
-
-        @include tablet {
-          margin: 0;
-          width: 17%;
-          @include h4-lists-contact-info;
-        }
-        &-kebab {
-          display: none;
-
-          @include tablet {
-            display: initial;
-            margin-left: -1rem;
-          }
-
-          @include desktop {
-            margin: 0;
-          }
-
-          &-img {
-          }
-        }
-      }
+      display: initial;
     }
   }
 
@@ -188,7 +95,7 @@
     right: 5vw;
     bottom: 10%;
     cursor: pointer;
-    
+
     @include tablet {
       right: 3vw;
     }
@@ -196,7 +103,7 @@
     @include desktop {
       right: 12.5vw;
     }
-    
+
     &-img {
       width: 1.25rem;
     }

@@ -1,9 +1,7 @@
 import React, { Component } from "react";
-import { Link } from "react-router-dom";
 import Axios from "axios";
 import "./Inventory.scss";
 import plusImg from "../../assets/Icons/SVG/Icon-add.svg";
-// import kebabMenu from "../../assets/Icons/SVG/Icon-kebab-default.svg";
 import InventoryItem from "../InventoryItem/InventoryItem";
 
 class Inventory extends Component {
@@ -11,8 +9,8 @@ class Inventory extends Component {
     inventory: [{}]
   };
 
-  getInventoryData(warehouseId) {
-    let id = warehouseId ? warehouseId : "";
+  getInventoryData(inventoryId) {
+    let id = inventoryId ? inventoryId : "";
     Axios.get(`http://localhost:8080/inventory/${id}`)
       .then(res => {
         if (id) {
@@ -20,7 +18,6 @@ class Inventory extends Component {
             inventory: [res.data]
           });
         } else {
-          console.log(res)
           this.setState({
             inventory: res.data
           });
@@ -28,12 +25,14 @@ class Inventory extends Component {
       })
       .catch(err => {
         console.log(err);
-        // this.props.history.push('/errors')
+        this.props.history.push("/errors"); //Navigates to error page on error
       });
   }
 
   componentDidMount() {
-    if (this.props.match.params.warehouseId) {
+    if (this.props.match.params.inventoryId) {
+      this.getInventoryData(this.props.match.params.inventoryId);
+    } else if (this.props.match.params.warehouseId) {
       this.getInventoryData(this.props.match.params.warehouseId);
     } else {
       this.getInventoryData();
@@ -44,12 +43,11 @@ class Inventory extends Component {
     console.log(e.target);
   };
 
-  addInventoryItem = (e) => {
-
-  }
+  addInventoryItem = e => {
+    console.log(e.target)
+  };
 
   render() {
-    //testing routes
     return (
       <section className="inventory">
         <div className="inventory__header">
@@ -71,45 +69,19 @@ class Inventory extends Component {
         </div>
 
         <div className="inventory__list-container">
-          {this.state.inventory.map( (item, i) => <InventoryItem key={i} item={item} showRemoveBtn={this.showRemoveBtn} />)}
-          {/* <Link className="inventory__list-link" to="id">
-            <ul className="inventory__list-entry">
-              <li className="inventory__list-entry-heading inventory__list-entry-heading--with-kebab">
-                item
-                <img
-                  src={kebabMenu}
-                  className="inventory__list-entry-heading-kebab"
-                  alt="remove item option"
-                />
-              </li>
-              <li className="inventory__list-entry-item-product">
-                Product Name here
-              </li>
-              <li className="inventory__list-entry-item-description">
-                Here is a very brief...
-              </li>
-              <li className="inventory__list-entry-heading">last ordered</li>
-              <li className="inventory__list-entry-item">05/24/2018</li>
-              <li className="inventory__list-entry-heading">location</li>
-              <li className="inventory__list-entry-item">Toronto, CAN</li>
-              <li className="inventory__list-entry-heading">quantity</li>
-              <li className="inventory__list-entry-item">12,000</li>
-              <li className="inventory__list-entry-heading">status</li>
-              <li className="inventory__list-entry-item">In Stock</li>
-              <li className="inventory__list-entry-item-kebab">
-                <img
-                  src={kebabMenu}
-                  className="inventory__list-entry-item-kebab-img"
-                  alt="remove item option"
-                />
-              </li>
-            </ul>
-          </Link> */}
+          {this.state.inventory.map((item, i) => (
+            <InventoryItem
+              key={i}
+              item={item}
+              showRemoveBtn={this.showRemoveBtn}
+            />
+          ))}
           <div className="inventory__add-item">
             <img
               src={plusImg}
               alt="add item plus"
               className="inventory__add-item-img"
+              onClick={this.addInventoryItem}
             />
           </div>
         </div>

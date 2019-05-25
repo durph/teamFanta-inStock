@@ -6,7 +6,7 @@
     "quantity": "400",
     "lastOrdered": "12/01/2018",
     "location": "Toronto, Ontario",
-    "isInstock": false,
+    "isInstock": true,
     "categories": "Crafts, Office supplies, Paper",
     "warehouseId": "W0"
   },
@@ -17,7 +17,7 @@
     "quantity": "0",
     "lastOrdered": "08/30/2018",
     "location": "Toronto, Ontario",
-    "isInstock": true,
+    "isInstock": false,
     "categories": "Construction, Home hardware, Reno",
     "warehouseId": "W0"
   },
