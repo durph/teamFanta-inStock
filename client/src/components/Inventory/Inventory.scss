@@ -94,7 +94,7 @@
       padding: 0;
       color: $para-text;
       border-bottom: 1px solid $divider-color;
-      margin: 0;
+      margin: 1.5REM 0 0;
 
       @include tablet {
         display: flex;
@@ -140,6 +140,7 @@
         &-description {
           @include m-h4-lists-contact-info;
           margin-bottom: 1.5rem;
+          padding-right: 2rem;
 
           @include tablet {
             margin: 0;
@@ -161,7 +162,7 @@
 
           @include tablet {
             display: initial;
-            margin-left: -2rem;
+            margin-left: -1rem;
           }
 
           @include desktop {

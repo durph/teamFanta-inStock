@@ -17,11 +17,12 @@ class Inventory extends Component {
       .then(res => {
         if (id) {
           this.setState({
-            inventory: [this.res.data]
+            inventory: [res.data]
           });
         } else {
+          console.log(res)
           this.setState({
-            inventory: this.res.data
+            inventory: res.data
           });
         }
       })

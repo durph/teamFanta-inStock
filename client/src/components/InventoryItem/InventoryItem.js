@@ -6,7 +6,7 @@ const InventoryItem = ({
   item: { id, name, description, quantity, lastOrdered, location, isInStock }
 }) => {
   return (
-    <Link className="inventory__list-link" to="id">
+    <Link className="inventory__list-link" to={id}>
             <ul className="inventory__list-entry">
               <li className="inventory__list-entry-heading inventory__list-entry-heading--with-kebab">
                 item
@@ -17,19 +17,19 @@ const InventoryItem = ({
                 />
               </li>
               <li className="inventory__list-entry-item-product">
-                Product Name here
+                {name}
               </li>
               <li className="inventory__list-entry-item-description">
-                Here is a very brief...
+                {description}
               </li>
               <li className="inventory__list-entry-heading">last ordered</li>
-              <li className="inventory__list-entry-item">05/24/2018</li>
+              <li className="inventory__list-entry-item">{lastOrdered}</li>
               <li className="inventory__list-entry-heading">location</li>
-              <li className="inventory__list-entry-item">Toronto, CAN</li>
+              <li className="inventory__list-entry-item">{location}</li>
               <li className="inventory__list-entry-heading">quantity</li>
-              <li className="inventory__list-entry-item">12,000</li>
+              <li className="inventory__list-entry-item">{quantity}</li>
               <li className="inventory__list-entry-heading">status</li>
-              <li className="inventory__list-entry-item">In Stock</li>
+              <li className="inventory__list-entry-item">{isInStock === true ? 'In Stock' : 'Out of Stock'}</li>
               <li className="inventory__list-entry-item-kebab">
                 <img
                   src={kebabMenu}
