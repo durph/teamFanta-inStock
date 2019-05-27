@@ -1,13 +1,21 @@
 import React, { Component } from "react";
+import "./Warehouse.scss";
+import plusImg from "../../assets/Icons/SVG/Icon-add.svg";
+import Axios from "axios";
 
 class Warehouse extends Component {
   render() {
-    //testing routes
+
     return (
-      <>
-        <h1>Hello from Warehouse</h1>
-        <h2>Test ID : {this.props.match.params.warehouseId}</h2>
-      </>
+      
+       <section className="warehouse">
+        <div className="warehouse__header">
+        <div className="warehouse__header-heading"> Locations </div>
+        <input type="text" className="warehouse__header-search" placeholder="Search.."/>
+        
+        </div>
+        
+      </section>
     );
   }
 }
