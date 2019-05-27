@@ -18,5 +18,3 @@ app.use("/inventory", inventoryRoutes);
 app.listen(port, function() {
   console.log(`app listening on port ${port}`);
 });
-
-//
