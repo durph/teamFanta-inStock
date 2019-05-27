@@ -74,6 +74,7 @@
         }
         @include desktop(){
            width:50%;
+           padding-right:2rem;
         }
         &-label{
             @include m-h5-labels();

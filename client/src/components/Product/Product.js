@@ -1,18 +1,48 @@
 import React, { Component } from "react";
 import back_arrow from "../../assets/Icons/SVG/Icon-back-arrow.svg";
 import "./product.scss";
+import axios from "axios";
+import {Link} from 'react-router-dom';
 class Product extends Component {
+  state={
+    item:{
+      "id": "",
+      "name": "",
+      "description": "",
+      "quantity": "",
+      "lastOrdered": "",
+      "location": "",
+      "isInstock": true,
+      "categories": "",
+      "warehouseId": ""
+    }
+  }
+
+  componentDidMount(){
+    let id  = this.props.match.params.inventoryId;
+    axios.get(`http://localhost:8080/inventory/${id}`)
+      .then(res => {
+        console.log(res);
+        this.setState({item:res.data});
+      })
+      .catch(err => {
+        console.log(err);
+        this.props.history.push("/errors"); //Navigates to error page on error
+      });
+  }
+
   render() {
-    //testing routes
     return (
       <section className="all">
         <section className="header">
         <div className="header-top">
+        <Link to="/inventory">
           <img src={back_arrow} alt="" className="header-top__icon" />
-          <h1 className="header-top__title">Product Name</h1>
+        </Link>
+          <h1 className="header-top__title">{this.state.item.name}</h1>
         </div>
           <div className="header__button">
-            <button className="header__button--status">In Stock</button>
+            <button className="header__button--status">{this.state.item.isInstock?"In Stock":"Sold Out"}</button>
           </div>
         </section>
         <section className="main">
@@ -21,9 +51,7 @@ class Product extends Component {
                 ITEM DESCRIPTION
               </label>
               <p className="main__description-content">
-                Here is a more detailed summary of the product
-                name, it’s uses, industries and possible attributes
-                that could be used to describe the product.
+              {this.state.item.description}
               </p>
           </div>
           <div className="main__info">
@@ -31,39 +59,38 @@ class Product extends Component {
               <label htmlFor="" className="main__info-item-label">
                 ORDERED BY
               </label>
-              <span className="main__info-item-content">Mark Saunders</span>
+              <span className="main__info-item-content">Mark Saunders(HardCoded)</span>
             </div>
             <div className="main__info-item">
               <label htmlFor="" className="main__info-item-label">
                 REFERENCE NUMBER
               </label>
-              <span className="main__info-item-content">JK2020FD7811201</span>
+              <span className="main__info-item-content">123456(HardCoded)</span>
             </div>
             <div className="main__info-item">
               <label htmlFor="" className="main__info-item-label">
                 LAST ORDERED
               </label>
-              <span className="main__info-item-content">5/24/2018</span>
+              <span className="main__info-item-content">{this.state.item.lastOrdered}</span>
             </div>
             <div className="main__info-item">
               <label htmlFor="" className="main__info-item-label">
                 LOCATION
               </label>
-              <span className="main__info-item-content">Toronto, CAN</span>
+              <span className="main__info-item-content">{this.state.item.location}</span>
             </div>
             <div className="main__info-item">
               <label htmlFor="" className="main__info-item-label">
                 QUANTITY
               </label>
-              <span className="main__info-item-content">12000</span>
+              <span className="main__info-item-content">{this.state.item.quantity}</span>
             </div>
             <div className="main__info-item main__info-item-category">
               <label htmlFor="" className="main__info-item-label">
                 CATEGORIES
               </label>
               <p className="main__info-item-content main__info-item-content--bottom">
-                Industrial, Automotive, Heavy, Mechanical, Engineering,
-                Transportation, Sales
+              {this.state.item.categories}
               </p>
             </div>
           </div>
