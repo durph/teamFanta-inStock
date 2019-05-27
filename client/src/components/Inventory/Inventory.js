@@ -6,7 +6,8 @@ import InventoryItem from "../InventoryItem/InventoryItem";
 
 class Inventory extends Component {
   state = {
-    inventory: [{}]
+    inventory: [{}],
+    dropDown: true
   };
 
   getInventoryData(inventoryId) {
@@ -39,8 +40,17 @@ class Inventory extends Component {
     }
   }
 
+  drop = () => {
+    if(this.state.dropDown)
+      this.setState({dropDown:false});
+    else
+      this.setState({dropDown:true});
+  }
+
   showRemoveBtn = e => {
-    console.log(e.target);
+    if(this.state.dropDown)
+      return (<button className="inventory__list-entry-item-kebab-delete">Delete</button>)
+    
   };
 
   addInventoryItem = e => {
@@ -74,6 +84,7 @@ class Inventory extends Component {
               key={i}
               item={item}
               showRemoveBtn={this.showRemoveBtn}
+              drop = {this.drop}
             />
           ))}
           <div className="inventory__add-item">
