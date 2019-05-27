@@ -47,7 +47,7 @@
 @mixin h5-labels {
     font-size: 0.75rem;
     line-height: 1.25rem;
-    font-family: $font-reg;
+    font-family: $font-demi-bold;
     color: $text-label-style;
     text-transform: uppercase;
 }
@@ -78,7 +78,7 @@
 @mixin m-h5-labels {
     font-size: 0.75rem;
     line-height: 1.25rem;
-    font-family: $font-reg;
+    font-family: $font-demi-bold;
     color: $text-label-style;
     text-transform: uppercase;
 }
