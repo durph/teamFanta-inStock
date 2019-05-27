@@ -7,7 +7,7 @@ import InventoryItem from "../InventoryItem/InventoryItem";
 class Inventory extends Component {
   state = {
     inventory: [{}],
-    dropDown: true
+    dropDown: false
   };
 
   getInventoryData(inventoryId) {

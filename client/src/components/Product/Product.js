@@ -18,6 +18,18 @@ class Product extends Component {
     }
   }
 
+  changeBg(){
+    if(!this.state.item.isInstock){
+      return {
+        backgroundColor:"red"
+      }
+    }
+    else
+      return{
+        backgroundColor:"rgb(105, 176, 45)"
+      }
+  }
+  
   componentDidMount(){
     let id  = this.props.match.params.inventoryId;
     axios.get(`http://localhost:8080/inventory/${id}`)
@@ -33,7 +45,7 @@ class Product extends Component {
 
   render() {
     return (
-      <section className="all">
+      <section className="product-page">
         <section className="header">
         <div className="header-top">
         <Link to="/inventory">
@@ -42,7 +54,7 @@ class Product extends Component {
           <h1 className="header-top__title">{this.state.item.name}</h1>
         </div>
           <div className="header__button">
-            <button className="header__button--status">{this.state.item.isInstock?"In Stock":"Sold Out"}</button>
+            <button className="header__button--status" style={this.changeBg()}>{this.state.item.isInstock?"In Stock":"Sold Out"}</button>
           </div>
         </section>
         <section className="main">

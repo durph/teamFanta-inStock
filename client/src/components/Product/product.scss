@@ -1,7 +1,7 @@
 @import '../../styles/global-variables';
 @import '../../styles/global-mixins';
 
-.all{
+.product-page{
     padding: 0rem 1rem;
     @include tablet(){
         padding: 0rem 1.5rem;
@@ -38,6 +38,7 @@
             width:auto;
         }
         &--status{
+            pointer-events: none;
             width:5.5rem;
             height:1.5rem;
             margin:1.5rem 0rem 2.5rem 0rem;
@@ -83,7 +84,7 @@
         }
         &-content{
             @include m-h4-paragraph();
-            margin:0 0 2rem 0;
+            margin:0 0 1.5rem 0;
         }   
     }
     &__info{
@@ -115,7 +116,7 @@
             }
             &-content{
                 @include m-h4-paragraph();
-                margin:0 0 2rem 0;
+                margin:0 0 1.5rem 0;
                 @include tablet{
                     &--bottom{
                         margin:0;
