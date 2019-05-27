@@ -1,0 +1,30 @@
+@import "../../styles/_global-mixins.scss";
+@import "../../styles/_global-variables.scss";
+@include font-faces;
+.warehouse {
+  &__add-item {
+    background-color: $primary-cta;
+    height: 3.75rem;
+    width: 3.75rem;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: fixed;
+    right: 5vw;
+    bottom: 10%;
+    cursor: pointer;
+
+    @include tablet {
+      right: 3vw;
+    }
+
+    @include desktop {
+      right: 12.5vw;
+    }
+
+    &-img {
+      width: 1.25rem;
+    }
+  }
+}
