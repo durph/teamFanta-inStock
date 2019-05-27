@@ -1,0 +1,64 @@
+@import "../../styles/global-variables";
+@import "../../styles/global-mixins";
+
+@include font-faces;
+
+.warehouse-details {
+  width: 100%;
+  padding: 0 5vw;
+
+  @include tablet {
+    padding: 0 3vw;
+  }
+
+  @include desktop {
+    padding: 0 12.5vw;
+  }
+
+  &__header {
+    width: 100%;
+    display: flex;
+    justify-content: flex-start;
+    margin-top: 3rem;
+
+    @include tablet {
+      padding-bottom: 2.5rem;
+      border-bottom: 1.5px solid $divider-color;
+      margin-bottom: 2.5rem;
+    }
+
+    &-heading {
+      @include h1-header();
+      margin: 0;
+    }
+
+    &-back {
+      display: flex;
+      align-items: center;
+      margin-right: 1rem;
+    }
+  }
+
+  &__info {
+    &-list {
+      padding: 0;
+      list-style: none;
+
+      &-label {
+        @include m-h5-labels;
+
+        @include tablet {
+          @include h5-labels;
+        }
+      }
+
+      &-item {
+        @include m-h4-lists-contact-info;
+
+        @include tablet {
+          @include h4-lists-contact-info;
+        }
+      }
+    }
+  }
+}
