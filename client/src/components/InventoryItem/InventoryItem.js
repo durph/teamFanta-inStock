@@ -3,9 +3,10 @@ import { Link } from "react-router-dom";
 import './InventoryItem.scss'
 import kebabMenu from "../../assets/Icons/SVG/Icon-kebab-default.svg";
 
+
 const InventoryItem = ({
   item: { id, name, description, quantity, lastOrdered, location, isInstock },
-  showRemoveBtn
+  showRemoveBtn,drop
 }) => {
   return (
     <div className="inventory__list-inner-container">
@@ -33,9 +34,10 @@ const InventoryItem = ({
           src={kebabMenu}
           className="inventory__list-entry-item-kebab-img"
           alt="remove item option"
-          onClick={showRemoveBtn}
+          onClick={drop}
           id={id}
         />
+        {showRemoveBtn()}
       </span>
     </div>
   );
