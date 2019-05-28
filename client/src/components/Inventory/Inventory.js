@@ -3,18 +3,12 @@ import Axios from "axios";
 import "./Inventory.scss";
 import InventoryList from "../InventoryList/InventoryList";
 import plusImg from "../../assets/Icons/SVG/Icon-add.svg";
-import InventoryItem from "../InventoryItem/InventoryItem";
-import { NONAME } from "dns";
 
 class Inventory extends Component {
   state = {
     inventory: [{}],
-    dropDown: true
-
-class Inventory extends Component {
-  state = {
-    inventory: [{}]
-  };
+    delete:false
+  }
 
   getInventoryData() {
     Axios.get(`http://localhost:8080/inventory/`)
@@ -35,31 +29,30 @@ class Inventory extends Component {
 
   drop = (e) => {
       if(e.target.className!=="inventory__list-entry-item-kebab-img"){
-        console.log("not here")
-        console.log(document.getElementsByClassName("inventory__list-entry-item-kebab-delete"));
-        console.log(document.getElementsByClassName("inventory__list-entry-item-kebab-delete").style);
+        let arr = document.getElementsByClassName("inventory__list-entry-item-kebab-delete");
+        for(let e of arr){
+          e.style.display = "none";
+        }
       }
       else{
-      console.log('im here');
-      let target = e.target.parentNode.firstChild.nextSibling;
-      // console.log(this.inv.contains(target));
-      let display = target.style.display;
-      console.log(target);
-      console.log(display);
-      if(!display){
-        display = 'block';
-        target.style.display = "block";
-      }
-      console.log(display);
-      if(display === "none" || !display){
-        target.style.display = "block";
-      }
-      else{
-        target.style.display = "none";
-      }
-    }
+        let arr = document.getElementsByClassName("inventory__list-entry-item-kebab-delete");
+        for(let e of arr){
+          e.style.display = "none";
+        }
+        let target = e.target.parentNode.firstChild.nextSibling;
+        let display = target.style.display;
+        if(display === "none" || !display){
+          target.style.display = "block";
+        }
+        else{
+          target.style.display = "none";
+        }
+     }
   }
 
+  update = ()=>{
+    this.getInventoryData();
+  }
 
   addInventoryItem = e => {
     console.log(e.target)
@@ -76,7 +69,7 @@ class Inventory extends Component {
             placeholder="Search.."
           />
         </div>
-        <InventoryList inventory={this.state.inventory} />
+        <InventoryList inventory={this.state.inventory} update={this.update}/>
         <div className="inventory__add-item">
             <img
               src={plusImg}
@@ -89,5 +82,6 @@ class Inventory extends Component {
     );
   }
 }
+
 
 export default Inventory;

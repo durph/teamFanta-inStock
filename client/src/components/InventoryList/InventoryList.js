@@ -1,25 +1,22 @@
 import React, { Component } from "react";
 import "./InventoryList.scss";
 import InventoryItem from "../InventoryItem/InventoryItem";
-
+import Axios from 'axios';
 class InventoryList extends Component {
   state = {
-    dropDown: false
+    delete:false
   };
 
-  drop = () => {
-    if (this.state.dropDown) this.setState({ dropDown: false });
-    else this.setState({ dropDown: true });
-  };
-
-  showRemoveBtn = e => {
-    if (this.state.dropDown)
-      return (
-        <button className="inventory__list-entry-item-kebab-delete">
-          Delete
-        </button>
-      );
-  };
+  removeHandler = (e) => {
+    const update = this.props.update;
+    Axios.delete(`http://localhost:8080/inventory/delete/${e.target.id}`)
+      .then((response=>{
+        this.props.update();
+      }))
+      .catch(err=>{
+        console.error.apply(err);
+      })
+  }
 
   addInventoryItem = e => {
     console.log(e.target);
@@ -44,8 +41,7 @@ class InventoryList extends Component {
             <InventoryItem
               key={i}
               item={item}
-              showRemoveBtn={this.showRemoveBtn}
-              drop={this.drop}
+              removeHandler={this.removeHandler}
             />
           ))}
         </div>

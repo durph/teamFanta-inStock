@@ -1,13 +1,11 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import './InventoryItem.scss'
+import './InventoryItem.scss';
 import kebabMenu from "../../assets/Icons/SVG/Icon-kebab-default.svg";
 
-
 const InventoryItem = ({
-  item: { id, name, description, quantity, lastOrdered, location, isInstock },
-  showRemoveBtn,drop
-}) => {
+  item: { id, name, description, quantity, lastOrdered, location, isInstock },removeHandler}
+  ) => {
   return (
     <div className="inventory__list-inner-container">
       <Link className="inventory__list-link" to={`/inventory/${id || "id"}`}>
@@ -34,10 +32,9 @@ const InventoryItem = ({
           src={kebabMenu}
           className="inventory__list-entry-item-kebab-img"
           alt="remove item option"
-          onClick={drop}
           id={id}
         />
-        <button className="inventory__list-entry-item-kebab-delete">Remove</button>
+        <button className="inventory__list-entry-item-kebab-delete" onClick={removeHandler} id={id}>Remove</button>
       </span>
     </div>
   );
