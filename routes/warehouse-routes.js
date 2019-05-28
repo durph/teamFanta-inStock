@@ -29,6 +29,11 @@ const getWarehouseDetails = (req, res) => {
   let warehouse = warehouses.find(
     warehouse => warehouse.id === req.params.warehouseId
   );
+  if (!warehouse) {
+    res.status(404).json({
+      error: "No warehouse with that ID was found"
+    });
+  };
   let warehouseInventory = inventory.filter(
     inventory => inventory.warehouseId === req.params.warehouseId
   );
