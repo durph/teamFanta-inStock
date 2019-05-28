@@ -1,0 +1,49 @@
+@import "../../styles/_global-mixins.scss";
+@import "../../styles/_global-variables.scss";
+@include font-faces;
+.warehouseadder {
+  
+    position:fixed;
+    left:0vw;
+    top:0vw;
+    width:100vw;
+    height:100vh;
+    background-color:$global-black;
+    opacity:0.7;
+    display:flex;
+    flex-direction:row;
+    justify-content:center;
+    align-items:center;
+
+    &__card
+    {
+        width:70vw;
+        height:60vh;
+        background-color:$white;
+        border-radius:4px;
+        box-shadow: inset -4px -5px 3px -7px $silver;
+        display:flex;
+        flex-flow:row wrap;
+        &__title
+        {
+            width:100%;
+            margin-left: 4vw;
+        }
+        &__formfield
+        {
+            display:flex;
+            flex-flow:row wrap;
+            justify-content:flex-start;
+            &-label
+            {
+                @include h5_labels;
+               
+            }
+        }
+        &__buttons
+        {
+        }
+
+
+    }
+}

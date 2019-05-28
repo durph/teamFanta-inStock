@@ -1,13 +1,14 @@
 import React, { Component } from "react";
 import plusImg from "../../assets/Icons/SVG/Icon-add.svg";
 import "./Warehouse.scss";
-
+import WarehouseAdder from "../WarehouseAdder/WarehouseAdder.js";
 class Warehouse extends Component {
-    
+    state = {
+        RenderAdder: true
+    };
     addWarehouse = e =>{
-        console.log(e.target);
-
-
+        console.log("clicked");
+        this.setState(prevstate =>({RenderAdder: !prevstate.RenderAdder}))
     } 
   render() {
     //testing routes
@@ -21,9 +22,9 @@ class Warehouse extends Component {
               alt="add item plus"
               className="warehouse__add-item-img"
               onClick ={this.addWarehouse} 
-
-            />
+                    />
           </div>
+        {(this.state.RenderAdder? <WarehouseAdder /> : "")}
       </>
     );
   }
