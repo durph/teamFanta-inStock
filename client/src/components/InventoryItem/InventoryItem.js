@@ -37,7 +37,7 @@ const InventoryItem = ({
           onClick={drop}
           id={id}
         />
-        {showRemoveBtn()}
+        <button className="inventory__list-entry-item-kebab-delete">Remove</button>
       </span>
     </div>
   );

@@ -3,11 +3,12 @@ import Axios from "axios";
 import "./Inventory.scss";
 import plusImg from "../../assets/Icons/SVG/Icon-add.svg";
 import InventoryItem from "../InventoryItem/InventoryItem";
+import { NONAME } from "dns";
 
 class Inventory extends Component {
   state = {
     inventory: [{}],
-    dropDown: false
+    dropDown: true
   };
 
   getInventoryData(inventoryId) {
@@ -40,18 +41,33 @@ class Inventory extends Component {
     }
   }
 
-  drop = () => {
-    if(this.state.dropDown)
-      this.setState({dropDown:false});
-    else
-      this.setState({dropDown:true});
+  drop = (e) => {
+      if(e.target.className!=="inventory__list-entry-item-kebab-img"){
+        console.log("not here")
+        console.log(document.getElementsByClassName("inventory__list-entry-item-kebab-delete"));
+        console.log(document.getElementsByClassName("inventory__list-entry-item-kebab-delete").style);
+      }
+      else{
+      console.log('im here');
+      let target = e.target.parentNode.firstChild.nextSibling;
+      // console.log(this.inv.contains(target));
+      let display = target.style.display;
+      console.log(target);
+      console.log(display);
+      if(!display){
+        display = 'block';
+        target.style.display = "block";
+      }
+      console.log(display);
+      if(display === "none" || !display){
+        target.style.display = "block";
+      }
+      else{
+        target.style.display = "none";
+      }
+    }
   }
 
-  showRemoveBtn = e => {
-    if(this.state.dropDown)
-      return (<button className="inventory__list-entry-item-kebab-delete">Delete</button>)
-    
-  };
 
   addInventoryItem = e => {
     console.log(e.target)
@@ -59,7 +75,7 @@ class Inventory extends Component {
 
   render() {
     return (
-      <section className="inventory">
+      <section onClick={this.drop} ref={(inv)=>{return this.inv = inv}} className="inventory">
         <div className="inventory__header">
           <h1 className="inventory__header-heading">Inventory</h1>
           <input
