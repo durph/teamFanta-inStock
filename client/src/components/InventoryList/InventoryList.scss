@@ -1,0 +1,45 @@
+@import "../../styles/_global-mixins.scss";
+@import "../../styles/_global-variables.scss"; 
+@include font-faces;
+
+.inventory {
+  width: 100%;
+  padding: 0 5vw;
+
+  @include tablet {
+    padding: 0 3vw;
+  }
+
+  @include desktop {
+    padding: 0 12.5vw;
+  }
+
+  &__header {
+    &-list {
+      display: none;
+
+      @include tablet {
+        list-style: none;
+        padding: 0;
+        width: 95%;
+        display: flex;
+        margin: 3rem 0 0;
+      }
+
+      &-heading {
+        @include h5-labels;
+        width: 17%;
+
+        &--wide {
+          width: 31%;
+        }
+      }
+    }
+  }
+
+  &__list {
+    &-container {
+      display: initial;
+    }
+  }
+}
