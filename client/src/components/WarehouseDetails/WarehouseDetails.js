@@ -17,9 +17,11 @@ class WarehouseDetails extends Component {
   componentDidMount() {
     axios
       .get(
-        `http://localhost:8080/warehouse/${this.props.match.params.warehouseId}`
+        `http://localhost:8080/warehouse/${this.props.match.params.warehouseId.toUpperCase()}`
       )
       .then(res => {
+        console.log(res.data)
+        console.log(this.props.match.params.warehouseId)
         this.setState({
           warehouse: res.data.warehouse,
           inventory: res.data.warehouseInventory
@@ -32,6 +34,7 @@ class WarehouseDetails extends Component {
   }
 
   render() {
+    console.log(this.state.warehouse)
     const { name, address, contact } = this.state.warehouse;
     return (
       <>

@@ -1,6 +1,5 @@
 import React, { Component } from "react";
 import "./InventoryList.scss";
-import plusImg from "../../assets/Icons/SVG/Icon-add.svg";
 import InventoryItem from "../InventoryItem/InventoryItem";
 
 class InventoryList extends Component {
@@ -49,14 +48,6 @@ class InventoryList extends Component {
               drop={this.drop}
             />
           ))}
-          <div className="inventory__add-item">
-            <img
-              src={plusImg}
-              alt="add item plus"
-              className="inventory__add-item-img"
-              onClick={this.addInventoryItem}
-            />
-          </div>
         </div>
       </>
     );

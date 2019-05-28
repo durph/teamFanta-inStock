@@ -8,11 +8,11 @@
   padding: 2rem 5vw 1rem;
 
   @include tablet {
-    padding: 0 3vw;
+    padding: 2rem 3vw 0;
   }
 
   @include desktop {
-    padding: 0 12.5vw;
+    padding: 3rem 12.5vw 0;
   }
 
   &__header {
@@ -21,13 +21,12 @@
     justify-content: flex-start;
 
     @include tablet {
-      padding-bottom: 2.5rem;
-      border-bottom: 1.5px solid $divider-color;
-      margin-bottom: 2.5rem;
+      padding-bottom: 1.5rem;
+      border-bottom: 1px solid $divider-color;
     }
 
     &-heading {
-      @include h1-header();
+      @include h1-header;
       margin: 0;
     }
 
@@ -49,6 +48,9 @@
       list-style: none;
       width: 100%;
 
+      @include tablet {
+        width: 50%;
+      }
 
       &-label {
         @include m-h5-labels;
@@ -64,6 +66,12 @@
         padding-bottom: 1rem
       }
 
+      &-item:nth-child(5) {
+        @include tablet {
+          padding: 0;
+        }
+
+      }
       &-item {
         @include m-h4-lists-contact-info;
 
@@ -80,11 +88,11 @@
     margin-bottom: 3rem;
 
     @include tablet {
-      padding: 0 3vw;
+      padding: 0 3vw 2rem;
     }
 
     @include desktop {
-      padding: 0 12.5vw;
+      padding: 0 12.5vw 3rem;
     }
   }
 }
