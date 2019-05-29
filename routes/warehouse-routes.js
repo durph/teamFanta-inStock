@@ -3,6 +3,10 @@ const router = Router();
 const inventory = require("../data/inventory.json");
 const warehouses = require("../data/warehouses.json");
 
+const getAllWarehouses = (req, res) => {
+  res.json(warehouses);
+};
+
 const postWarehouse = (req, res) => {
   Object.values(req.body).forEach(element => {
     if (!element) {
@@ -27,5 +31,6 @@ const getWarehouse = (req, res) => {
 
 router.post("/", postWarehouse);
 router.get("/", getWarehouse);
+router.get("/", getAllWarehouses);
 
 module.exports = router;

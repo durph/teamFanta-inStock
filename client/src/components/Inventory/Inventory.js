@@ -4,9 +4,11 @@ import "./Inventory.scss";
 import plusImg from "../../assets/Icons/SVG/Icon-add.svg";
 import InventoryItem from "../InventoryItem/InventoryItem";
 
+
 class Inventory extends Component {
   state = {
-    inventory: [{}]
+    inventory: [{}],
+    dropDown: false
   };
 
   getInventoryData(inventoryId) {
@@ -39,8 +41,17 @@ class Inventory extends Component {
     }
   }
 
+  drop = () => {
+    if(this.state.dropDown)
+      this.setState({dropDown:false});
+    else
+      this.setState({dropDown:true});
+  }
+
   showRemoveBtn = e => {
-    console.log(e.target);
+    if(this.state.dropDown)
+      return (<button className="inventory__list-entry-item-kebab-delete">Delete</button>)
+    
   };
 
   addInventoryItem = e => {
@@ -74,6 +85,7 @@ class Inventory extends Component {
               key={i}
               item={item}
               showRemoveBtn={this.showRemoveBtn}
+              drop = {this.drop}
             />
           ))}
           <div className="inventory__add-item">
@@ -84,6 +96,11 @@ class Inventory extends Component {
               onClick={this.addInventoryItem}
             />
           </div>
+          <form className="form__container">
+            <div className="form__container-heading">Create New</div>
+            <div className="form__container-product">Product</div>
+            <input type="text" placeholder="Item Name"></input>
+          </form>
         </div>
       </section>
     );
