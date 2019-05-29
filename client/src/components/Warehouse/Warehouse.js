@@ -3,6 +3,7 @@ import "./Warehouse.scss";
 import plusImg from "../../assets/Icons/SVG/Icon-add.svg";
 import Axios from "axios";
 import Arrow from "../../assets/Icons/SVG/Icon-arrow-right.svg"
+import plusImg from "../../assets/Icons/SVG/Icon-add.svg";
 
 class Warehouse extends Component {
     
@@ -41,6 +42,11 @@ class Warehouse extends Component {
 
   
 
+
+
+
+
+    
     addWarehouse = e =>{
         console.log(e.target);
 
@@ -106,6 +112,9 @@ class Warehouse extends Component {
 
 
 
+      <>
+        <h1>Hello from Warehouse</h1>
+        <h2>Test ID : {this.props.match.params.warehouseId}</h2>
           <div className="warehouse__add-item">
             <img
               src={plusImg}
@@ -115,7 +124,9 @@ class Warehouse extends Component {
 
             />
           </div>
+          </>
           </section>
+          
     
     );
   }
