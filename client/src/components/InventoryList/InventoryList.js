@@ -4,11 +4,11 @@ import InventoryItem from "../InventoryItem/InventoryItem";
 import Axios from 'axios';
 class InventoryList extends Component {
   state = {
-    delete:false
+    idToShow:"",
+    classNameToShow:""
   };
 
   removeHandler = (e) => {
-    const update = this.props.update;
     Axios.delete(`http://localhost:8080/inventory/delete/${e.target.id}`)
       .then((response=>{
         this.props.update();
@@ -21,6 +21,11 @@ class InventoryList extends Component {
   addInventoryItem = e => {
     console.log(e.target);
   };
+
+  showDropDown = (e) => {
+    this.setState({idToShow:e.target.id});
+    this.setState({classNameToShow:e.target.className});
+  } 
 
   render() {
     return (
@@ -42,6 +47,10 @@ class InventoryList extends Component {
               key={i}
               item={item}
               removeHandler={this.removeHandler}
+              showDropDown = {this.showDropDown}
+              idToShow = {this.state.idToShow}
+              classNameToShow={this.state.classNameToShow}
+              clickImg = {this.props.clickImg}
             />
           ))}
         </div>

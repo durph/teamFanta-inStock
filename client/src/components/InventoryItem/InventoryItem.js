@@ -4,8 +4,13 @@ import './InventoryItem.scss';
 import kebabMenu from "../../assets/Icons/SVG/Icon-kebab-default.svg";
 
 const InventoryItem = ({
-  item: { id, name, description, quantity, lastOrdered, location, isInstock },removeHandler}
+  item: { id, name, description, quantity, lastOrdered, location, isInstock },removeHandler,showDropDown,idToShow,classNameToShow,clickImg}
   ) => {
+  const classShow = "inventory__list-entry-item-kebab-delete inventory__list-entry-item-kebab-delete--show";
+  const classHide = "inventory__list-entry-item-kebab-delete inventory__list-entry-item-kebab-delete--hide";
+  const imgClassShow = "inventory__list-entry-item-kebab-img shown";
+  const imgClassHide = "inventory__list-entry-item-kebab-img hidden";
+  let shown = classNameToShow === imgClassShow;
   return (
     <div className="inventory__list-inner-container">
       <Link className="inventory__list-link" to={`/inventory/${id || "id"}`}>
@@ -30,11 +35,12 @@ const InventoryItem = ({
       <span className="inventory__list-entry-item-kebab">
         <img
           src={kebabMenu}
-          className="inventory__list-entry-item-kebab-img"
+          className={(id===idToShow)&&!shown&&clickImg?imgClassShow:imgClassHide}
           alt="remove item option"
           id={id}
+          onClick={showDropDown}
         />
-        <button className="inventory__list-entry-item-kebab-delete" onClick={removeHandler} id={id}>Remove</button>
+        <button className={(id===idToShow)&&!shown&&clickImg?classShow:classHide} onClick={removeHandler} id={id}>Remove</button>
       </span>
     </div>
   );

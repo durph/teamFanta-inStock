@@ -7,7 +7,7 @@ import plusImg from "../../assets/Icons/SVG/Icon-add.svg";
 class Inventory extends Component {
   state = {
     inventory: [{}],
-    delete:false
+    clickImg:true
   }
 
   getInventoryData() {
@@ -27,27 +27,14 @@ class Inventory extends Component {
     this.getInventoryData();
   }
 
-  drop = (e) => {
-      if(e.target.className!=="inventory__list-entry-item-kebab-img"){
-        let arr = document.getElementsByClassName("inventory__list-entry-item-kebab-delete");
-        for(let e of arr){
-          e.style.display = "none";
-        }
-      }
-      else{
-        let arr = document.getElementsByClassName("inventory__list-entry-item-kebab-delete");
-        for(let e of arr){
-          e.style.display = "none";
-        }
-        let target = e.target.parentNode.firstChild.nextSibling;
-        let display = target.style.display;
-        if(display === "none" || !display){
-          target.style.display = "block";
-        }
-        else{
-          target.style.display = "none";
-        }
-     }
+  clickOn = (e) => {
+    if(!e.target.className.includes("inventory__list-entry-item-kebab-img")){
+      this.setState({clickImg:false});
+    }
+    else{
+      console.log("in");
+      this.setState({clickImg:true});
+    }
   }
 
   update = ()=>{
@@ -60,7 +47,7 @@ class Inventory extends Component {
 
   render() {
     return (
-      <section onClick={this.drop} ref={(inv)=>{return this.inv = inv}} className="inventory">
+      <section ref={inv=>this.inv=inv} onClick={this.clickOn} className="inventory">
         <div className="inventory__header">
           <h1 className="inventory__header-heading">Inventory</h1>
           <input
@@ -69,7 +56,7 @@ class Inventory extends Component {
             placeholder="Search.."
           />
         </div>
-        <InventoryList inventory={this.state.inventory} update={this.update}/>
+        <InventoryList inventory={this.state.inventory} update={this.update} clickImg={this.state.clickImg}/>
         <div className="inventory__add-item">
             <img
               src={plusImg}
