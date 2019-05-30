@@ -11,7 +11,7 @@ class Header extends Component {
           <div className="header__logo-container">
             <Link to="/Warehouse">
               {" "}
-              <img className="header__logo" src={instock} />{" "}
+              <img className="header__logo" alt="inStock logo" src={instock} />{" "}
             </Link>
           </div>
           <ul className="header__link-container">
@@ -19,7 +19,7 @@ class Header extends Component {
               <NavLink
                 activeClassName="header__container-navlink--active"
                 className="header__container-navlink"
-                to="/Inventory"
+                to="/inventory"
               >
                 Inventory
               </NavLink>
@@ -28,7 +28,7 @@ class Header extends Component {
               <NavLink
                 activeClassName="header__container-navlink--active"
                 className="header__container-navlink"
-                to="/Warehouse"
+                to="/warehouse"
               >
                 Locations
               </NavLink>
