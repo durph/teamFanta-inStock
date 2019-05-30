@@ -2,12 +2,14 @@ import React, { Component } from "react";
 import Axios from "axios";
 import "./Inventory.scss";
 import InventoryList from "../InventoryList/InventoryList";
+import NewInventoryItem from "../NewInventoryItem/NewInventoryItem";
 import plusImg from "../../assets/Icons/SVG/Icon-add.svg";
 
 
 class Inventory extends Component {
   state = {
-    inventory: [{}]
+    inventory: [{}],
+    isModal: false,
   };
 
   getInventoryData() {
@@ -27,6 +29,13 @@ class Inventory extends Component {
     this.getInventoryData();
   }
 
+  addInventoryItem = () => {
+    this.setState({
+      isModal: true
+    })
+    console.log(this.state.isModal)
+  };
+
   render() {
     return (
       <section className="inventory">
@@ -40,13 +49,14 @@ class Inventory extends Component {
         </div>
         <InventoryList inventory={this.state.inventory} />
         <div className="inventory__add-item">
-            <img
-              src={plusImg}
-              alt="add item plus"
-              className="inventory__add-item-img"
-              onClick={this.addInventoryItem}
-            />
-          </div>
+          <img
+            src={plusImg}
+            alt="add item plus"
+            className="inventory__add-item-img"
+            onClick={this.addInventoryItem}
+          />
+        </div>
+        <NewInventoryItem isModal={this.state.isModal} />
       </section>
     );
   }

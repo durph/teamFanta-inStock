@@ -1,0 +1,61 @@
+@import "../../styles/_global-mixins.scss";
+@import "../../styles/_global-variables.scss"; 
+@include font-faces;
+
+.inventory-modal {
+  display: none;
+  &--active {
+    display: flex;
+  }
+  position: absolute;
+  top: 0;
+  left: 0;
+  
+
+  @include tablet {
+    background-color: $global-black;
+    opacity: 0.5;
+    width: 100%;
+    height: 100%;
+    justify-content: center;
+    align-items: center;
+  }
+
+
+  &__header {
+    &-title {
+      @include m-h1-header;
+
+      @include tablet {
+        @include h1-header;
+      }
+    }
+  }
+
+  &__form {
+
+    &-label {
+      @include m-h5-labels;
+
+      @include tablet {
+        @include h5-labels;
+      }
+    }
+
+    &-input {
+      @include m-h4-paragraph;
+
+      @include tablet {
+        @include h4-paragraph-comments;
+      }
+    }
+
+    &-textarea {
+      @include m-h4-paragraph;
+
+      @include tablet {
+        @include h4-paragraph-comments;
+      }
+    }
+  }
+}

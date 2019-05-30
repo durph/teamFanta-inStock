@@ -3,7 +3,7 @@ import "./Warehouse.scss";
 import plusImg from "../../assets/Icons/SVG/Icon-add.svg";
 import Axios from "axios";
 import Arrow from "../../assets/Icons/SVG/Icon-arrow-right.svg"
-import plusImg from "../../assets/Icons/SVG/Icon-add.svg";
+
 
 class Warehouse extends Component {
     
