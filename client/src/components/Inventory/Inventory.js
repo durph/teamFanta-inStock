@@ -96,11 +96,7 @@ class Inventory extends Component {
               onClick={this.addInventoryItem}
             />
           </div>
-          <form className="form__container">
-            <div className="form__container-heading">Create New</div>
-            <div className="form__container-product">Product</div>
-            <input type="text" placeholder="Item Name"></input>
-          </form>
+          
         </div>
       </section>
     );

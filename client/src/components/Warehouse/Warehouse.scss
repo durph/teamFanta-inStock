@@ -4,102 +4,40 @@
 @include font-faces;
 
 .warehouse {
-    width: 100%;
-    padding: 0 5vw;
+  width: 100%;
+  padding: 0 5vw;
 
-    &__header {
-        margin-bottom: 2rem;
-    
+  &__header {
+    margin-bottom: 2rem;
 
-        &-heading {
-            @include m-h1-header;
-            margin: 2rem 0 1rem 0;
-        } 
-        }
-
-        &__header-search {
-            width: 80%;
-            height: 100%;
-            border-radius: 4px;
-            border: 1px $text-field-border solid;
-            background-color: $text-field-background-fill;
-            padding: 0.75rem 0.5rem 0.75rem 2.5rem;
-            word-wrap: break-word;
-            white-space: normal;
-            background: url("../../assets/Icons/SVG/Icon-search.svg") no-repeat;
-            background-position: 0.5rem 50%;
-            @include m-h4-paragraph;
-        }
-
-        &__headings {
-            display: flex;
-
-
-            &-list {
-                display: none;
-                
-            }
-        }
-    
-    &__info-container {
-        display: flex;
-        justify-content: space-between;
-        border-bottom: 1px solid $global-black;
-        padding-bottom: 1.5rem;
-        margin-bottom: 1.5rem;
-        
-        
+    &-heading {
+      @include m-h1-header;
+      margin: 2rem 0 1rem 0;
     }
-    
-    .warehouse__listing {
+  }
 
-        @include m-h4-lists-contact-info;
-    
-        
-        &-nameandaddress {
-            
-            
-            
+  &__header-search {
+    width: 80%;
+    height: 100%;
+    border-radius: 4px;
+    border: 1px $text-field-border solid;
+    background-color: $text-field-background-fill;
+    padding: 0.75rem 0.5rem 0.75rem 2.5rem;
+    word-wrap: break-word;
+    white-space: normal;
+    background: url("../../assets/Icons/SVG/Icon-search.svg") no-repeat;
+    background-position: 0.5rem 50%;
+    @include m-h4-paragraph;
+  }
 
-            &-name {
-                font-family: $font-demi-bold;
-                margin-bottom: 0.5rem;
-            }
+  &__headings {
+    display: flex;
 
-        }
-
-        &-info-nameandadd {
-            margin-top: 1rem;
-
-            &-position {
-                font-style: italic;
-            }
-
-        }
-
-        &-info-contact {
-            margin-top: 1rem;
-        }
-
-        &-info-product {
-            margin-top: 1rem;
-
-            
-        }
-      //  &-info-product-arrow {
-            
-        
-         
-        
-        
+    &-list {
+      display: none;
     }
-
+  }
 }
-
-
-
-
-
 
 @include font-faces;
 .warehouse {
@@ -128,143 +66,51 @@
       width: 1.25rem;
     }
   }
-
 }
-
 
 //////////////////tablet/////////////////////////////
 
 @include tablet {
+  .warehouse {
+    line-height: 3rem;
+    @include m-h4-lists-contact-info;
 
-    .warehouse {
-        line-height: 3rem;
-        @include m-h4-lists-contact-info;
+    &__header {
+      display: flex;
+      justify-content: space-between;
+      @include h1-header;
 
-        &__header {
-            display: flex;
-            justify-content: space-between;
-            @include h1-header;
-
-            &-search {
-                margin-top: 1.75rem;
-                width: 40%;
-                margin-right: 2rem;
-            }
-        }
-
-        &__listing {
-            width: 100%;
-        }
-        
-
-        &__listing-info {
-            display: flex;
-            justify-content: space-between;
-            width: 100%;
-        }
-
-        &__listing-nameandaddress {
-            line-height: 0.75rem;
-            margin-bottom: 1rem;
-        } 
-
-        &__listing-info-nameandadd {
-            margin-right: 0;
-            width: 21%;
-        }
-
-        &__listing-info-contact {
-            margin-right: 4rem;
-        }
-
-        &__listing-info-product-items {
-            width: 85%;
-        }
-
-        
+      &-search {
+        margin-top: 1.75rem;
+        width: 40%;
+        margin-right: 2rem;
+      }
     }
+  }
 }
-
 
 ////////////////////desktop////////////////////////////////////
 @include desktop {
-
-.warehouse {
-
-    
+  .warehouse {
     &__header-heading {
-        @include h1-header;
-        margin-left: 7rem;
-    
+      @include h1-header;
+      margin-left: 7rem;
     }
 
     &__header-search {
-        width: 20%;
+      width: 20%;
     }
     &__headings {
-        width: 100%;
-        display: flex;
-        justify-content: space-around;
-        @include h5-labels;
-        padding-left: initial;
+      width: 100%;
+      display: flex;
+      justify-content: space-around;
+      @include h5-labels;
+      padding-left: initial;
 
-    &-list {    
+      &-list {
         display: unset;
         list-style-type: none;
-        
-            } 
-        }
-    
-    &__listing {
-        width: 100%;
-        display: flex;
-        justify-content: flex-start;
-        align-items: baseline;
-        padding-bottom: 0.5rem;
-        margin-left: 7.5rem;
-        
-
-        &-info {
-            width: 75%;
-        }
-
-        &-nameandaddress {
-            margin-right: 12rem;
-            width: 11%;
-        }
-
-        
-
-        &-info-nameandadd {
-            width: 42%;
-            margin-right: 5rem;
-            
-        }
-
-        &-info-contact {
-            width: 42%;
-            margin-right: 6.5rem;
-        }
-
-        &-info-product {
-            display: flex;
-            justify-content: center;
-            width: 50%;
-        
-        &-items {
-            width: 68%;
-        }
+      }
     }
-
-        &-info-product-arrow {
-            display: flex;
-            
-            
-            
-            
-        }
-    }
-    }
-    }
-
+  }
 }
