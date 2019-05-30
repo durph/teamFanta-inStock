@@ -21,11 +21,28 @@ const postWarehouse = (req, res) => {
   res.json(warehouses);
 };
 
-const getWarehouse = (req, res) => {
+const getWarehouses = (req, res) => {
   res.json(warehouses);
 };
 
+const getWarehouseDetails = (req, res) => {
+  let warehouse = warehouses.find(
+    warehouse => warehouse.id === req.params.warehouseId
+  );
+  if (!warehouse) {
+    res.status(404).json({
+      error: "No warehouse with that ID was found"
+    });
+  };
+  let warehouseInventory = inventory.filter(
+    inventory => inventory.warehouseId === req.params.warehouseId
+  );
+
+  res.json({ warehouse, warehouseInventory });
+};
+
 router.post("/", postWarehouse);
-router.get("/", getWarehouse);
+router.get("/", getWarehouses);
+router.get("/:warehouseId", getWarehouseDetails);
 
 module.exports = router;

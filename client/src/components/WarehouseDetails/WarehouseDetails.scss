@@ -1,0 +1,98 @@
+@import "../../styles/global-variables";
+@import "../../styles/global-mixins";
+
+@include font-faces;
+
+.warehouse-details {
+  width: 100%;
+  padding: 2rem 5vw 1rem;
+
+  @include tablet {
+    padding: 2rem 3vw 0;
+  }
+
+  @include desktop {
+    padding: 3rem 12.5vw 0;
+  }
+
+  &__header {
+    width: 100%;
+    display: flex;
+    justify-content: flex-start;
+
+    @include tablet {
+      padding-bottom: 1.5rem;
+      border-bottom: 1px solid $divider-color;
+    }
+
+    &-heading {
+      @include h1-header;
+      margin: 0;
+    }
+
+    &-back {
+      display: flex;
+      align-items: center;
+      margin-right: 1rem;
+    }
+  }
+
+  &__info {
+    display: flex;
+    flex-wrap: wrap;
+    padding: 2rem 0 0;
+
+    &-list {
+      margin: 0;
+      padding: 0;
+      list-style: none;
+      width: 100%;
+
+      @include tablet {
+        width: 50%;
+      }
+
+      &-label {
+        @include m-h5-labels;
+        margin-bottom: 0.5rem;
+
+        @include tablet {
+          @include h5-labels;
+        }
+      }
+
+      &-item:nth-child(3),
+      &-item:nth-child(5) {
+        padding-bottom: 1rem
+      }
+
+      &-item:nth-child(5) {
+        @include tablet {
+          padding: 0;
+        }
+
+      }
+      &-item {
+        @include m-h4-lists-contact-info;
+
+        @include tablet {
+          @include h4-lists-contact-info;
+        }
+      }
+    }
+  }
+  &__inventory-list-container {
+    background-color: $text-field-background-fill;
+    width: 100%;
+    padding: 1px 5vw 2rem;
+    margin-bottom: 3rem;
+
+    @include tablet {
+      padding: 0 3vw 2rem;
+    }
+
+    @include desktop {
+      padding: 0 12.5vw 3rem;
+    }
+  }
+}
