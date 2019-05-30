@@ -65,6 +65,8 @@ class Inventory extends Component {
               onClick={this.addInventoryItem}
             />
           </div>
+          
+        
       </section>
     );
   }
