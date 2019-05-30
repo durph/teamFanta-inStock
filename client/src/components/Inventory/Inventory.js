@@ -4,6 +4,7 @@ import "./Inventory.scss";
 import InventoryList from "../InventoryList/InventoryList";
 import plusImg from "../../assets/Icons/SVG/Icon-add.svg";
 
+
 class Inventory extends Component {
   state = {
     inventory: [{}],
