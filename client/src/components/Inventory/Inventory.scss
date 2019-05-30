@@ -53,33 +53,6 @@
         @include h4-paragraph-comments;
       }
     }
-
-    &-list {
-      display: none;
-
-      @include tablet {
-        list-style: none;
-        padding: 0;
-        width: 95%;
-        display: flex;
-        margin: 3rem 0 0;
-      }
-
-      &-heading {
-        @include h5-labels;
-        width: 17%;
-
-        &--wide {
-          width: 31%;
-        }
-      }
-    }
-  }
-
-  &__list {
-    &-container {
-      display: initial;
-    }
   }
 
   &__add-item {
