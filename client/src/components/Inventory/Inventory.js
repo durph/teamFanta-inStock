@@ -32,7 +32,6 @@ class Inventory extends Component {
       this.setState({clickImg:false});
     }
     else{
-      console.log("in");
       this.setState({clickImg:true});
     }
   }
