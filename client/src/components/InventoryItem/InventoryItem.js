@@ -11,6 +11,7 @@ const InventoryItem = ({
   const imgClassShow = "inventory__list-entry-item-kebab-img shown";
   const imgClassHide = "inventory__list-entry-item-kebab-img hidden";
   let shown = classNameToShow === imgClassShow;
+  
   return (
     <div className="inventory__list-inner-container">
       <Link className="inventory__list-link" to={`/inventory/${id || "id"}`}>

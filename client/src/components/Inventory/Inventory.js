@@ -46,7 +46,7 @@ class Inventory extends Component {
 
   render() {
     return (
-      <section ref={inv=>this.inv=inv} onClick={this.clickOn} className="inventory">
+      <section  onClick={this.clickOn} className="inventory">
         <div className="inventory__header">
           <h1 className="inventory__header-heading">Inventory</h1>
           <input
