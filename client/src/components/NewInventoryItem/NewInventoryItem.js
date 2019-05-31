@@ -1,8 +1,14 @@
 import React, { Component } from "react";
-import Axios from "axios";
 import "./NewInventoryItem.scss";
-
+import Switch from 'react-switch'
 class NewInventoryItem extends Component {
+  state = {
+    checked: true
+  }
+
+  handleChange =() => {
+    this.setState({ checked: !this.state.checked });
+  }
 
   render() {
     return (
@@ -11,28 +17,38 @@ class NewInventoryItem extends Component {
             <div className="inventory-modal__header">
               <h1 className="inventory-modal__header-title">Create New</h1>
             </div>
-              <form className="inventory-modal__form">
+              <form onSubmit={this.props.submitNewItem} className="inventory-modal__form">
                 <div className="inventory-modal__form-inner-container">
-                  <label htmlFor="" className="inventory-modal__form-label"></label>
-                  <input type="text" className="inventory-modal__form-input"/>
-                  <label htmlFor="" className="inventory-modal__form-label"></label>
-                  <input type="text" className="inventory-modal__form-input"/>
+                  <label htmlFor="name" className="inventory-modal__form-label">Product</label>
+                  <input type="text" id="name" className="inventory-modal__form-input" placeholder="Item Name"/>
+                  <label htmlFor="lastOrdered" className="inventory-modal__form-label">Last Ordered</label>
+                  <input type="date" id="lastOrdered" className="inventory-modal__form-input" />
                 </div>
                 <div className="inventory-modal__form-inner-container">
-                  <label htmlFor="" className="inventory-modal__form-label"></label>
-                  <input type="text" className="inventory-modal__form-input"/>
-                  <label htmlFor="" className="inventory-modal__form-label"></label>
-                  <input type="text" className="inventory-modal__form-input"/>
+                  <label htmlFor="city" className="inventory-modal__form-label">City</label>
+                  <input type="text" id="city" className="inventory-modal__form-input" placeholder="City" />
+                  <label htmlFor="country" className="inventory-modal__form-label">Country</label>
+                  <select className="inventory-modal__form-dropdown" id="country">
+                    <option className="inventory-modal__form-dropdown-item" value="Canada">Canada</option>
+                    <option className="inventory-modal__form-dropdown-item" value="Not Canada">Not Canada</option>
+                  </select>
                 </div>
                 <div className="inventory-modal__form-inner-container">
-                  <label htmlFor="" className="inventory-modal__form-label"></label>
-                  <input type="text" className="inventory-modal__form-input"/>
-                  <label htmlFor="" className="inventory-modal__form-label"></label>
-                  <input type="text" className="inventory-modal__form-input"/>
+                  <label htmlFor="quantity" className="inventory-modal__form-label">Quantity</label>
+                  <input type="number" id="quantity" className="inventory-modal__form-input" placeholder="0" />
+                  <label htmlFor="status" className="inventory-modal__form-label">Status</label>
+                  <div className="inventory-modal__form-switch-container">
+                    <p className="inventory-modal__form-switch-text">{this.state.checked ? 'InStock' : 'Out of Stock'}</p>
+                    <Switch checkedIcon={false} onColor="#69b02d" id="status" onChange={this.handleChange} checked={this.state.checked} />
+                  </div>
                 </div>
                 <div className="inventory-modal__form-inner-container">
-                  <label htmlFor="" className="inventory-modal__form-label"></label>
-                  <textarea type="text" className="inventory-modal__form-textarea"/>
+                  <label htmlFor="description" className="inventory-modal__form-label">Item Description</label>
+                  <textarea type="text" id="description" className="inventory-modal__form-textarea" placeholder="(Optional)" />
+                </div>
+                <div className="inventory-modal__form-btn-container">
+                  <button onClick={this.props.removeModal} className="inventory-modal__form-btn-cancel">CANCEL</button>
+                  <button type='submit' className="inventory-modal__form-btn-save">SAVE</button>
                 </div>
               </form>
             </div>

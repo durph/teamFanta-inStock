@@ -31,10 +31,37 @@ class Inventory extends Component {
 
   addInventoryItem = () => {
     this.setState({
-      isModal: true
+      isModal: !this.state.isModal
     })
-    console.log(this.state.isModal)
   };
+
+  removeModal = () => {
+    this.setState({
+      isModal: !this.state.isModal
+    })
+  }
+
+  submitNewItem = (e) => {
+    e.preventDefault();
+    console.log(e.target.description.value)
+    Axios.post(`http://localhost:8080/inventory/`, {
+      name: e.target.name,
+      description: e.target.description || 'no description',
+      quantity: e.target.quantity,
+      lastOrdered: e.target.lastOrdered,
+      location: e.target.location,
+      isInstock: e.target.checked,
+      categories: "Generic, Home, Supplies",
+      warehouseId: 'W0',
+    })
+        .then(res => {
+          console.log(res.data)
+          this.getInventoryData()
+        })
+        .catch(err => {
+          console.log(err);
+        })
+  }
 
   render() {
     return (
@@ -56,7 +83,7 @@ class Inventory extends Component {
             onClick={this.addInventoryItem}
           />
         </div>
-        <NewInventoryItem isModal={this.state.isModal} />
+        <NewInventoryItem isModal={this.state.isModal} removeModal={this.removeModal} submitNewItem={this.submitNewItem} />
       </section>
     );
   }
