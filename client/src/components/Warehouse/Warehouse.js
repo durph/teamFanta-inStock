@@ -4,7 +4,7 @@ import "./Warehouse.scss";
 import WarehouseAdder from "../WarehouseAdder/WarehouseAdder.js";
 class Warehouse extends Component {
     state = {
-        RenderAdder: true
+        RenderAdder: false
     };
     addWarehouse = e =>{
         console.log("clicked");
