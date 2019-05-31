@@ -75,12 +75,16 @@
           @include h4-lists-contact-info;
         }
         &-kebab {
+
           &-img {
             padding: 0 1rem 1rem;
 
             @include tablet {
               padding-top: 1.75rem;
             }
+          }
+          &-delete{
+            height:1rem;
           }
         }
       }

@@ -1,27 +1,23 @@
 import React, { Component } from "react";
 import Axios from "axios";
 import "./Inventory.scss";
+import InventoryList from "../InventoryList/InventoryList";
+import NewInventoryItem from "../NewInventoryItem/NewInventoryItem";
 import plusImg from "../../assets/Icons/SVG/Icon-add.svg";
-import InventoryItem from "../InventoryItem/InventoryItem";
+
 
 class Inventory extends Component {
   state = {
-    inventory: [{}]
+    inventory: [{}],
+    isModal: false,
   };
 
-  getInventoryData(inventoryId) {
-    let id = inventoryId ? inventoryId : "";
-    Axios.get(`http://localhost:8080/inventory/${id}`)
+  getInventoryData() {
+    Axios.get(`http://localhost:8080/inventory/`)
       .then(res => {
-        if (id) {
-          this.setState({
-            inventory: [res.data]
-          });
-        } else {
-          this.setState({
-            inventory: res.data
-          });
-        }
+        this.setState({
+          inventory: res.data
+        });
       })
       .catch(err => {
         console.log(err);
@@ -30,26 +26,46 @@ class Inventory extends Component {
   }
 
   componentDidMount() {
-    if (this.props.match.params.inventoryId) {
-      this.getInventoryData(this.props.match.params.inventoryId);
-    } else if (this.props.match.params.warehouseId) {
-      this.getInventoryData(this.props.match.params.warehouseId);
-    } else {
-      this.getInventoryData();
-    }
+    this.getInventoryData();
   }
 
-  showRemoveBtn = e => {
-    console.log(e.target);
+  addInventoryItem = () => {
+    this.setState({
+      isModal: !this.state.isModal
+    })
   };
 
-  addInventoryItem = e => {
-    console.log(e.target)
-  };
+  removeModal = () => {
+    this.setState({
+      isModal: false
+    })
+  }
+
+  submitNewItem = (e) => {
+    e.preventDefault();
+    console.log(e.target.description.value)
+    Axios.post(`http://localhost:8080/inventory/`, {
+      name: e.target.name,
+      description: e.target.description || 'no description',
+      quantity: e.target.quantity,
+      lastOrdered: e.target.lastOrdered,
+      location: e.target.location,
+      isInstock: e.target.checked,
+      categories: "Generic, Home, Supplies",
+      warehouseId: 'W0',
+    })
+        .then(res => {
+          console.log(res.data)
+          this.getInventoryData()
+        })
+        .catch(err => {
+          console.log(err);
+        })
+  }
 
   render() {
     return (
-      <section className="inventory">
+      <section className={!this.state.isModal ? "inventory" : "inventory inventory--no-scroll"}>
         <div className="inventory__header">
           <h1 className="inventory__header-heading">Inventory</h1>
           <input
@@ -57,34 +73,17 @@ class Inventory extends Component {
             className="inventory__header-search"
             placeholder="Search.."
           />
-          <ul className="inventory__header-list">
-            <li className="inventory__header-list-heading inventory__header-list-heading--wide">
-              item
-            </li>
-            <li className="inventory__header-list-heading">last ordered</li>
-            <li className="inventory__header-list-heading">location</li>
-            <li className="inventory__header-list-heading">quantity</li>
-            <li className="inventory__header-list-heading">status</li>
-          </ul>
         </div>
-
-        <div className="inventory__list-container">
-          {this.state.inventory.map((item, i) => (
-            <InventoryItem
-              key={i}
-              item={item}
-              showRemoveBtn={this.showRemoveBtn}
-            />
-          ))}
-          <div className="inventory__add-item">
-            <img
-              src={plusImg}
-              alt="add item plus"
-              className="inventory__add-item-img"
-              onClick={this.addInventoryItem}
-            />
-          </div>
+        <InventoryList inventory={this.state.inventory} />
+        <div onClick={this.addInventoryItem} className={!this.state.isModal ? "inventory__add-item" : "inventory__add-item inventory__add-item--hide"} >
+          
+          <img
+            src={plusImg}
+            alt="add item plus"
+            className="inventory__add-item-img"
+          />
         </div>
+        <NewInventoryItem isModal={this.state.isModal} removeModal={this.removeModal} submitNewItem={this.submitNewItem} />
       </section>
     );
   }
