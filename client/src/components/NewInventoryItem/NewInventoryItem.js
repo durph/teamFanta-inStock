@@ -3,21 +3,48 @@ import "./NewInventoryItem.scss";
 import Switch from 'react-switch'
 class NewInventoryItem extends Component {
   state = {
-    checked: true
+    checked: true,
+    leaveModal: true
   }
 
   handleChange =() => {
     this.setState({ checked: !this.state.checked });
   }
 
+  // offLeaveModal() {
+  //   this.setState({
+  //     leaveModal: !this.setState.leaveModal
+  //   })
+  // }
+
+  // onLeaveModal () {
+  //   this.setState({
+  //     leaveModal: true
+  //   })
+  // }
+
+  clickHandler = (e) => {
+    if(e.target.contains(this.refs.modal)) {
+      this.props.removeModal();
+      this.refs.formRef.reset();
+    } else {
+      return;
+    }
+  }
+
+  cancelHandler = () => {
+    this.props.removeModal();
+    this.refs.formRef.reset();
+  }
+
   render() {
     return (
-      <div className={this.props.isModal ? "inventory-modal inventory-modal--active" : "inventory-modal"}>
-            <div className="inventory-modal-container">
+      <div ref="modal" onClick={this.clickHandler} className={this.props.isModal ? "inventory-modal inventory-modal--active" : "inventory-modal"}>
+          <div  className="inventory-modal-container">
             <div className="inventory-modal__header">
               <h1 className="inventory-modal__header-title">Create New</h1>
             </div>
-              <form onSubmit={this.props.submitNewItem} className="inventory-modal__form">
+              <form ref="formRef" onSubmit={this.props.submitNewItem} className="inventory-modal__form">
                 <div className="inventory-modal__form-inner-container">
                   <label htmlFor="name" className="inventory-modal__form-label">Product</label>
                   <input type="text" id="name" className="inventory-modal__form-input" placeholder="Item Name"/>
@@ -47,7 +74,7 @@ class NewInventoryItem extends Component {
                   <textarea type="text" id="description" className="inventory-modal__form-textarea" placeholder="(Optional)" />
                 </div>
                 <div className="inventory-modal__form-btn-container">
-                  <button onClick={this.props.removeModal} className="inventory-modal__form-btn-cancel">CANCEL</button>
+                  <button onClick={this.cancelHandler} className="inventory-modal__form-btn-cancel">CANCEL</button>
                   <button type='submit' className="inventory-modal__form-btn-save">SAVE</button>
                 </div>
               </form>

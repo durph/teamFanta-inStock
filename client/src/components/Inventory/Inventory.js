@@ -37,7 +37,7 @@ class Inventory extends Component {
 
   removeModal = () => {
     this.setState({
-      isModal: !this.state.isModal
+      isModal: false
     })
   }
 
@@ -65,7 +65,7 @@ class Inventory extends Component {
 
   render() {
     return (
-      <section className="inventory">
+      <section className={!this.state.isModal ? "inventory" : "inventory inventory--no-scroll"}>
         <div className="inventory__header">
           <h1 className="inventory__header-heading">Inventory</h1>
           <input
@@ -75,12 +75,12 @@ class Inventory extends Component {
           />
         </div>
         <InventoryList inventory={this.state.inventory} />
-        <div className="inventory__add-item">
+        <div onClick={this.addInventoryItem} className={!this.state.isModal ? "inventory__add-item" : "inventory__add-item inventory__add-item--hide"} >
+          
           <img
             src={plusImg}
             alt="add item plus"
             className="inventory__add-item-img"
-            onClick={this.addInventoryItem}
           />
         </div>
         <NewInventoryItem isModal={this.state.isModal} removeModal={this.removeModal} submitNewItem={this.submitNewItem} />
