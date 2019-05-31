@@ -83,7 +83,6 @@
       &-search {
         margin-top: 1.75rem;
         width: 40%;
-        margin-right: 2rem;
       }
     }
   }
@@ -94,7 +93,7 @@
   .warehouse {
     &__header-heading {
       @include h1-header;
-      margin-left: 7rem;
+      
     }
 
     &__header-search {
@@ -110,6 +109,7 @@
       &-list {
         display: unset;
         list-style-type: none;
+        width: 25%;
       }
     }
   }
