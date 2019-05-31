@@ -75,17 +75,42 @@
           @include h4-lists-contact-info;
         }
         &-kebab {
+          position: relative;
 
           &-img {
             padding: 0 1rem 1rem;
-
+            cursor: pointer;
             @include tablet {
               padding-top: 1.75rem;
             }
           }
           &-delete{
-            height:1rem;
+            position: absolute;
+            top: 1.5rem; 
+            right: 0.8rem;
+            @include tablet(){
+              top:3.5rem;
+              right:-1.2rem;
+            }
+            display: none;
+            width:10rem;
+            height:2.75rem;
+            padding-left:1rem;
+            border:1px solid $divider-color;
+            background-color:$white;
+            text-align: left;
+            @include desktop(){
+              top:3.5rem;
+              right:-1.2rem;
+            }
+            &--hide{
+              display: none;
+            }
+            &--show{
+              display: block;
+            }
           }
+          
         }
       }
     }

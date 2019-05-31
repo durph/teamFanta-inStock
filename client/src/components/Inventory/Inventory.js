@@ -7,8 +7,9 @@ import plusImg from "../../assets/Icons/SVG/Icon-add.svg";
 
 class Inventory extends Component {
   state = {
-    inventory: [{}]
-  };
+    inventory: [{}],
+    clickImg:true
+  }
 
   getInventoryData() {
     Axios.get(`http://localhost:8080/inventory/`)
@@ -27,9 +28,26 @@ class Inventory extends Component {
     this.getInventoryData();
   }
 
+  clickOn = (e) => {
+    if(!e.target.className.includes("inventory__list-entry-item-kebab-img")){
+      this.setState({clickImg:false});
+    }
+    else{
+      this.setState({clickImg:true});
+    }
+  }
+
+  update = ()=>{
+    this.getInventoryData();
+  }
+
+  addInventoryItem = e => {
+    console.log(e.target)
+  };
+
   render() {
     return (
-      <section className="inventory">
+      <section  onClick={this.clickOn} className="inventory">
         <div className="inventory__header">
           <h1 className="inventory__header-heading">Inventory</h1>
           <input
@@ -38,7 +56,7 @@ class Inventory extends Component {
             placeholder="Search.."
           />
         </div>
-        <InventoryList inventory={this.state.inventory} />
+        <InventoryList inventory={this.state.inventory} update={this.update} clickImg={this.state.clickImg}/>
         <div className="inventory__add-item">
             <img
               src={plusImg}
@@ -47,9 +65,12 @@ class Inventory extends Component {
               onClick={this.addInventoryItem}
             />
           </div>
+          
+        
       </section>
     );
   }
 }
+
 
 export default Inventory;
