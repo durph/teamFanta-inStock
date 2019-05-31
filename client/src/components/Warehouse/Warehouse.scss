@@ -1,5 +1,44 @@
 @import "../../styles/_global-mixins.scss";
 @import "../../styles/_global-variables.scss";
+
+@include font-faces;
+
+.warehouse {
+  width: 100%;
+  padding: 0 5vw;
+
+  &__header {
+    margin-bottom: 2rem;
+
+    &-heading {
+      @include m-h1-header;
+      margin: 2rem 0 1rem 0;
+    }
+  }
+
+  &__header-search {
+    width: 80%;
+    height: 100%;
+    border-radius: 4px;
+    border: 1px $text-field-border solid;
+    background-color: $text-field-background-fill;
+    padding: 0.75rem 0.5rem 0.75rem 2.5rem;
+    word-wrap: break-word;
+    white-space: normal;
+    background: url("../../assets/Icons/SVG/Icon-search.svg") no-repeat;
+    background-position: 0.5rem 50%;
+    @include m-h4-paragraph;
+  }
+
+  &__headings {
+    display: none;
+
+    &-list {
+      display: none;
+    }
+  }
+}
+
 @include font-faces;
 .warehouse {
   &__add-item {
@@ -25,6 +64,53 @@
 
     &-img {
       width: 1.25rem;
+    }
+  }
+}
+
+//////////////////tablet/////////////////////////////
+
+@include tablet {
+  .warehouse {
+    line-height: 3rem;
+    @include m-h4-lists-contact-info;
+
+    &__header {
+      display: flex;
+      justify-content: space-between;
+      @include h1-header;
+
+      &-search {
+        margin-top: 1.75rem;
+        width: 40%;
+      }
+    }
+  }
+}
+
+////////////////////desktop////////////////////////////////////
+@include desktop {
+  .warehouse {
+    &__header-heading {
+      @include h1-header;
+      
+    }
+
+    &__header-search {
+      width: 20%;
+    }
+    &__headings {
+      width: 100%;
+      display: flex;
+      justify-content: space-around;
+      @include h5-labels;
+      padding-left: initial;
+
+      &-list {
+        display: unset;
+        list-style-type: none;
+        width: 25%;
+      }
     }
   }
 }

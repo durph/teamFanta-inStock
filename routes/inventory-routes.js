@@ -1,6 +1,4 @@
-const {
-  Router
-} = require("express");
+const { Router } = require("express");
 const router = Router();
 const inventory = require("../data/inventory.json");
 
@@ -14,24 +12,24 @@ const getItemById = (req, res) => {
     res.json(foundItem);
   } else {
     res.status(404).json({
-      error: 'No item with that ID was found'
+      error: "No item with that ID was found"
     });
   }
-}
+};
 
 const deleteItemById = (req, res) => {
   let targetItem = inventory.find(i => i.id === req.params.inventoryId);
   if (!targetItem) {
     res.status(404).json({
-      error: 'No item with that ID was found'
+      error: "No item with that ID was found"
     });
   }
   let index = inventory.indexOf(targetItem);
   inventory.splice(index, 1);
   res.json(inventory);
-}
+};
 
-router.get('/:inventoryId', getItemById);
+router.get("/:inventoryId", getItemById);
 router.get("/", getAllInventory);
 router.delete("/delete/:inventoryId", deleteItemById);
 
