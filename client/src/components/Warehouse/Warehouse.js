@@ -2,11 +2,7 @@ import React, { Component } from "react";
 import "./Warehouse.scss";
 import plusImg from "../../assets/Icons/SVG/Icon-add.svg";
 import Axios from "axios";
-<<<<<<< HEAD
-import Arrow from "../../assets/Icons/SVG/Icon-arrow-right.svg"
-=======
 import WarehouseItem from "../WarehouseItem/WarehouseItem";
->>>>>>> 3492dafcda35cec85b58d0ef3e4e73da204ae9e6
 
 class Warehouse extends Component {
   state = {

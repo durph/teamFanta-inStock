@@ -34,7 +34,7 @@ class InventoryList extends Component {
           <ul className="inventory__header-list">
             <li className="inventory__header-list-heading inventory__header-list-heading--wide">
               item
-            </li>
+             </li>
             <li className="inventory__header-list-heading">last ordered</li>
             <li className="inventory__header-list-heading">location</li>
             <li className="inventory__header-list-heading">quantity</li>

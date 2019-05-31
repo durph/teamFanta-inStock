@@ -34,7 +34,7 @@ const WarehouseItem = ({
               </div>
             </div>
             <div className="warehouse__listing-info-product">
-              <div clasName="warehouse__listing-info-product-items">
+              <div className="warehouse__listing-info-product-items">
                 {inventoryCategories}
               </div>
             </div>

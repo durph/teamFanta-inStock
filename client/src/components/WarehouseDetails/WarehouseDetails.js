@@ -11,8 +11,41 @@ class WarehouseDetails extends Component {
       address: {},
       contact: {}
     },
-    inventory: []
+    inventory: [],
+    clickImg:true,
+    update:false
   };
+
+  clickOn = (e) => {
+    console.log(e.target);
+    if(!e.target.className.includes("inventory__list-entry-item-kebab-img")){
+      console.log('out');
+      this.setState({clickImg:false});
+    }
+    else{
+      console.log('in');
+      this.setState({clickImg:true});
+    }
+  }
+
+  update = () => {
+    axios
+      .get(
+        `http://localhost:8080/warehouse/${this.props.match.params.warehouseId.toUpperCase()}`
+      )
+      .then(res => {
+        console.log(res.data)
+        console.log(this.props.match.params.warehouseId)
+        this.setState({
+          warehouse: res.data.warehouse,
+          inventory: res.data.warehouseInventory
+        });
+      })
+      .catch(err => {
+        console.log(err);
+        this.props.history.push("/errors");
+      });
+  }
 
   componentDidMount() {
     axios
@@ -34,11 +67,11 @@ class WarehouseDetails extends Component {
   }
 
   render() {
-    console.log(this.state.warehouse)
+    // console.log(this.state.warehouse)
     const { name, address, contact } = this.state.warehouse;
     return (
-      <>
-        <main className="warehouse-details">
+      <div onClick={this.clickOn}>
+        <main  className="warehouse-details">
           <div className="warehouse-details__header">
             <Link to="/warehouse" className="warehouse-details__header-back">
               <img
@@ -83,9 +116,9 @@ class WarehouseDetails extends Component {
           </section>
         </main>
         <section className="warehouse-details__inventory-list-container">
-          <InventoryList inventory={this.state.inventory} />
+          <InventoryList inventory={this.state.inventory} clickImg={this.state.clickImg} update={this.update} />
         </section>
-      </>
+      </div>
     );
   }
 }
