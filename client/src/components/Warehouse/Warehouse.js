@@ -3,6 +3,7 @@ import "./Warehouse.scss";
 import plusImg from "../../assets/Icons/SVG/Icon-add.svg";
 import Axios from "axios";
 import Arrow from "../../assets/Icons/SVG/Icon-arrow-right.svg"
+import WarehouseAdder from "../WarehouseAdder/WarehouseAdder.js";
 
 
 class Warehouse extends Component {
@@ -12,6 +13,7 @@ class Warehouse extends Component {
       address:{},
       contact:{}
     }], 
+    isModal: false,
       }
 
 
@@ -29,6 +31,29 @@ class Warehouse extends Component {
         });
       }
 
+  addWarehouseItem = () => {
+    this.setState({
+      isModal: !this.state.isModal
+    })
+  };
+
+  submitNewWarehouse = (e) => {
+    e.preventDefault();
+    console.log(e.target.description.value)
+    Axios.post(`http://localhost:8080/warehouse/`, {
+      name: e.target.name,
+      id: e.target.id,
+        address: e.target.address,
+        contact: e.target.contact,
+        inventoryCategories:e.target.inventoryCategories
+    })
+  }
+
+  removeModal = () => {
+    this.setState({
+      isModal: false
+    })
+  }
 
   render() {
     
@@ -78,14 +103,14 @@ class Warehouse extends Component {
       <>
         <h1>Hello from Warehouse</h1>
         <h2>Test ID : {this.props.match.params.warehouseId}</h2>
-          <div className="warehouse__add-item">
+          <div onClick={this.addWarehouseItem} className={!this.state.isModal ? "warehouse__add-item" : "warehouse__add-item warehouse-item--hide"} >
             <img
               src={plusImg}
               alt="add item plus"
               className="warehouse__add-item-img"
-              onClick ={this.addWarehouse} 
                     />
           </div>
+        <WarehouseAdder isModal={this.state.isModal} removeModal={this.removeModal} submitNewWarehouse={this.submitNewWarehouse} />
           </>
           </section>
           
