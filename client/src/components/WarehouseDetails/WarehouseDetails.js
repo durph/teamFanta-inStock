@@ -17,13 +17,10 @@ class WarehouseDetails extends Component {
   };
 
   clickOn = (e) => {
-    console.log(e.target);
     if(!e.target.className.includes("inventory__list-entry-item-kebab-img")){
-      console.log('out');
       this.setState({clickImg:false});
     }
     else{
-      console.log('in');
       this.setState({clickImg:true});
     }
   }
@@ -34,8 +31,6 @@ class WarehouseDetails extends Component {
         `http://localhost:8080/warehouse/${this.props.match.params.warehouseId.toUpperCase()}`
       )
       .then(res => {
-        console.log(res.data)
-        console.log(this.props.match.params.warehouseId)
         this.setState({
           warehouse: res.data.warehouse,
           inventory: res.data.warehouseInventory
@@ -53,8 +48,6 @@ class WarehouseDetails extends Component {
         `http://localhost:8080/warehouse/${this.props.match.params.warehouseId.toUpperCase()}`
       )
       .then(res => {
-        console.log(res.data)
-        console.log(this.props.match.params.warehouseId)
         this.setState({
           warehouse: res.data.warehouse,
           inventory: res.data.warehouseInventory
@@ -67,7 +60,6 @@ class WarehouseDetails extends Component {
   }
 
   render() {
-    // console.log(this.state.warehouse)
     const { name, address, contact } = this.state.warehouse;
     return (
       <div onClick={this.clickOn}>

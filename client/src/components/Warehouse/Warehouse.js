@@ -18,7 +18,6 @@ class Warehouse extends Component {
   componentDidMount() {
     Axios.get("http://localhost:8080/warehouse/")
       .then(response => {
-        console.log(response.data);
         this.setState({ warehouses: response.data });
       })
       .catch(error => {
@@ -26,9 +25,7 @@ class Warehouse extends Component {
       });
   }
 
-  addWarehouse = e => {
-    console.log(e.target);
-  };
+
   render() {
     return (
       <section className="warehouse">

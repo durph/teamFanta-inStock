@@ -49,7 +49,7 @@ class Inventory extends Component {
       id: shortid.generate(),
       name: e.target.name.value,
       description: e.target.description.value || "no description",
-      quantity: e.target.quantity.value,
+      quantity: e.target.quantity.value || '0',
       lastOrdered: e.target.lastOrdered.value,
       location: e.target.location.value,
       isInstock: isInstock,
