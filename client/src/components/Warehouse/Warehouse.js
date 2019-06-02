@@ -18,6 +18,10 @@ class Warehouse extends Component {
   };
 
   componentDidMount() {
+      this.updateWarehouse();
+  }
+
+  updateWarehouse = () =>{
     Axios.get("http://localhost:8080/warehouse/")
       .then(response => {
         console.log(response.data);
@@ -26,23 +30,34 @@ class Warehouse extends Component {
       .catch(error => {
         console.log(error);
       });
-  }
-
+  };
   addWarehouseItem = () => {
     this.setState({
       isModal: !this.state.isModal
     });
   };
 
-  submitNewWarehouse = e => {
+    submitNewWarehouse = e => {
     e.preventDefault();
-    console.log(e.target.description.value);
     Axios.post(`http://localhost:8080/warehouse/`, {
-      name: e.target.name,
-      id: e.target.id,
-      address: e.target.address,
-      contact: e.target.contact,
-      inventoryCategories: e.target.inventoryCategories
+      name:e.target.elements["WarehouseName"].value,
+      id:e.target.elements["WarehouseName"].value.toUpperCase(),
+      address:{
+          street:e.target.elements["WarehouseAddress"].value,
+          suiteNum:e.target.elements["suite"] || "N/A",
+          city:e.target.elements["City"].value,
+          province:e.target.elements["Province"].value,
+          postal:e.target.elements["PostalCode"].value,
+      },
+        contact:{
+            name:e.target.elements["ContactName"].value,
+            title:e.target.elements["ContactTitle"].value,
+            phone:e.target.elements["ContactPhone"].value,
+            email:e.target.elements["ContactEmail"].value,
+        },
+      inventoryCategories:e.target.elements["categories"].value
+    }).then(res=>{
+        this.setState({warehouse:res.data});
     });
   };
 
