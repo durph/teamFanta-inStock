@@ -3,25 +3,12 @@ import "./NewInventoryItem.scss";
 import Switch from 'react-switch'
 class NewInventoryItem extends Component {
   state = {
-    checked: true,
-    leaveModal: true
+    checked: true
   }
 
   handleChange =() => {
     this.setState({ checked: !this.state.checked });
   }
-
-  // offLeaveModal() {
-  //   this.setState({
-  //     leaveModal: !this.setState.leaveModal
-  //   })
-  // }
-
-  // onLeaveModal () {
-  //   this.setState({
-  //     leaveModal: true
-  //   })
-  // }
 
   clickHandler = (e) => {
     if(e.target.contains(this.refs.modal)) {
@@ -54,15 +41,15 @@ class NewInventoryItem extends Component {
                 <div className="inventory-modal__form-inner-container">
                   <label htmlFor="city" className="inventory-modal__form-label">City</label>
                   <input type="text" id="city" className="inventory-modal__form-input" placeholder="City" />
-                  <label htmlFor="country" className="inventory-modal__form-label">Country</label>
-                  <select className="inventory-modal__form-dropdown" id="country">
+                  <label htmlFor="location" className="inventory-modal__form-label">Country</label>
+                  <select className="inventory-modal__form-dropdown" id="location">
                     <option className="inventory-modal__form-dropdown-item" value="Canada">Canada</option>
                     <option className="inventory-modal__form-dropdown-item" value="Not Canada">Not Canada</option>
                   </select>
                 </div>
                 <div className="inventory-modal__form-inner-container">
                   <label htmlFor="quantity" className="inventory-modal__form-label">Quantity</label>
-                  <input type="number" id="quantity" className="inventory-modal__form-input" placeholder="0" />
+                  <input type="number" min="0" id="quantity" className="inventory-modal__form-input" placeholder="0" />
                   <label htmlFor="status" className="inventory-modal__form-label">Status</label>
                   <div className="inventory-modal__form-switch-container">
                     <p className="inventory-modal__form-switch-text">{this.state.checked ? 'InStock' : 'Out of Stock'}</p>
@@ -74,8 +61,8 @@ class NewInventoryItem extends Component {
                   <textarea type="text" id="description" className="inventory-modal__form-textarea" placeholder="(Optional)" />
                 </div>
                 <div className="inventory-modal__form-btn-container">
-                  <button onClick={this.cancelHandler} className="inventory-modal__form-btn-cancel">CANCEL</button>
-                  <button type='submit' className="inventory-modal__form-btn-save">SAVE</button>
+                  <button onClick={this.cancelHandler} type="reset" className="inventory-modal__form-btn-cancel">CANCEL</button>
+                  <button onClick={this.props.removeModal} type='submit' className="inventory-modal__form-btn-save">SAVE</button>
                 </div>
               </form>
             </div>

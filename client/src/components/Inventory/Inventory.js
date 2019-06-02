@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import Axios from "axios";
+import shortid from "shortid";
 import "./Inventory.scss";
 import InventoryList from "../InventoryList/InventoryList";
 import NewInventoryItem from "../NewInventoryItem/NewInventoryItem";
@@ -42,24 +43,25 @@ class Inventory extends Component {
   }
 
   submitNewItem = (e) => {
+    let isInstock = e.target.status.value === 'on' ? true : false
     e.preventDefault();
-    console.log(e.target.description.value)
     Axios.post(`http://localhost:8080/inventory/`, {
-      name: e.target.name,
-      description: e.target.description || 'no description',
-      quantity: e.target.quantity,
-      lastOrdered: e.target.lastOrdered,
-      location: e.target.location,
-      isInstock: e.target.checked,
+      id: shortid.generate(),
+      name: e.target.name.value,
+      description: e.target.description.value || 'no description',
+      quantity: e.target.quantity.value,
+      lastOrdered: e.target.lastOrdered.value,
+      location: e.target.location.value,
+      isInstock: isInstock,
       categories: "Generic, Home, Supplies",
-      warehouseId: 'W0',
+      warehouseId: 'W0'
     })
         .then(res => {
-          console.log(res.data)
           this.getInventoryData()
         })
         .catch(err => {
           console.log(err);
+          alert('No empty fields allowed. Please resubmit this form with all fields filled out unless otherwise indicated.')
         })
   }
 
