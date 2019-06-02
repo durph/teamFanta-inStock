@@ -48,32 +48,24 @@ export default class WarehouseAdder extends Component {
             </div>
               <form ref="formRef" onSubmit={this.props.submitNewItem} className="warehouse-modal__form">
                 <div className="warehouse-modal__form-inner-container">
-                  <label htmlFor="name" className="warehouse-modal__form-label">Product</label>
-                  <input type="text" id="name" className="warehouse-modal__form-input" placeholder="Item Name"/>
-                  <label htmlFor="lastOrdered" className="warehouse-modal__form-label">Last Ordered</label>
-                  <input type="date" id="lastOrdered" className="warehouse-modal__form-input" />
+                  <label htmlFor="WarehouseName" className="warehouse-modal__form-label">Warehouse Name</label>
+                  <input type="text" id="WarehouseName" className="warehouse-modal__form-input" placeholder="Warehouse Name"/>
+                  <label htmlFor="WarehouseAddress" className="warehouse-modal__form-label">Address</label>
+                  <input type="text" id="WarehouseAddress" className="warehouse-modal__form-input" />
                 </div>
                 <div className="warehouse-modal__form-inner-container">
-                  <label htmlFor="city" className="warehouse-modal__form-label">City</label>
-                  <input type="text" id="city" className="warehouse-modal__form-input" placeholder="City" />
-                  <label htmlFor="country" className="warehouse-modal__form-label">Country</label>
-                  <select className="warehouse-modal__form-dropdown" id="country">
-                    <option className="warehouse-modal__form-dropdown-item" value="Canada">Canada</option>
-                    <option className="warehouse-modal__form-dropdown-item" value="Not Canada">Not Canada</option>
-                  </select>
+                  <label htmlFor="contactTitle" className="warehouse-modal__form-label">Contact Title</label>
+                  <input type="text" id="contactTitle" className="warehouse-modal__form-input" placeholder="Title" />
+                  <label htmlFor="ContactPhone" className="warehouse-modal__form-label">Contact Phone #</label>
+                  <input type="text" id="ContactPhone" className="warehouse-modal__form-input" />
+                </div>
+                <div className="warehouse-modal__form-inner-container--column">
+                  <label htmlFor="contactEmail" className="warehouse-modal__form-label">Contact email</label>
+                  <input type="number" id="contactEmail" className="warehouse-modal__form-input" placeholder="youremail@domain.com" />
                 </div>
                 <div className="warehouse-modal__form-inner-container">
-                  <label htmlFor="quantity" className="warehouse-modal__form-label">Quantity</label>
-                  <input type="number" id="quantity" className="warehouse-modal__form-input" placeholder="0" />
-                  <label htmlFor="status" className="warehouse-modal__form-label">Status</label>
-                  <div className="warehouse-modal__form-switch-container">
-                    <p className="warehouse-modal__form-switch-text">{this.state.checked ? 'InStock' : 'Out of Stock'}</p>
-                    <Switch checkedIcon={false} onColor="#69b02d" id="status" onChange={this.handleChange} checked={this.state.checked} />
-                  </div>
-                </div>
-                <div className="warehouse-modal__form-inner-container">
-                  <label htmlFor="description" className="warehouse-modal__form-label">Item Description</label>
-                  <textarea type="text" id="description" className="warehouse-modal__form-textarea" placeholder="(Optional)" />
+                  <label htmlFor="categories" className="warehouse-modal__form-label">Warehouse Categories</label>
+                  <textarea type="text" id="categories" className="warehouse-modal__form-textarea" placeholder="categories" />
                 </div>
                 <div className="warehouse-modal__form-btn-container">
                   <button onClick={this.cancelHandler} className="warehouse-modal__form-btn-cancel">CANCEL</button>
