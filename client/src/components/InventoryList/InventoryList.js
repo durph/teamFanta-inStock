@@ -1,29 +1,31 @@
 import React, { Component } from "react";
 import "./InventoryList.scss";
 import InventoryItem from "../InventoryItem/InventoryItem";
-
+import Axios from 'axios';
 class InventoryList extends Component {
   state = {
-    dropDown: false
+    idToShow:"",
+    classNameToShow:""
   };
 
-  drop = () => {
-    if (this.state.dropDown) this.setState({ dropDown: false });
-    else this.setState({ dropDown: true });
-  };
-
-  showRemoveBtn = e => {
-    if (this.state.dropDown)
-      return (
-        <button className="inventory__list-entry-item-kebab-delete">
-          Delete
-        </button>
-      );
-  };
+  removeHandler = (e) => {
+    Axios.delete(`http://localhost:8080/inventory/delete/${e.target.id}`)
+      .then((response=>{
+        this.props.update();
+      }))
+      .catch(err=>{
+        console.error.apply(err);
+      })
+  }
 
   addInventoryItem = e => {
     console.log(e.target);
   };
+
+  showDropDown = (e) => {
+    this.setState({idToShow:e.target.id});
+    this.setState({classNameToShow:e.target.className});
+  } 
 
   render() {
     return (
@@ -32,7 +34,7 @@ class InventoryList extends Component {
           <ul className="inventory__header-list">
             <li className="inventory__header-list-heading inventory__header-list-heading--wide">
               item
-            </li>
+             </li>
             <li className="inventory__header-list-heading">last ordered</li>
             <li className="inventory__header-list-heading">location</li>
             <li className="inventory__header-list-heading">quantity</li>
@@ -44,8 +46,11 @@ class InventoryList extends Component {
             <InventoryItem
               key={i}
               item={item}
-              showRemoveBtn={this.showRemoveBtn}
-              drop={this.drop}
+              removeHandler={this.removeHandler}
+              showDropDown = {this.showDropDown}
+              idToShow = {this.state.idToShow}
+              classNameToShow={this.state.classNameToShow}
+              clickImg = {this.props.clickImg}
             />
           ))}
         </div>

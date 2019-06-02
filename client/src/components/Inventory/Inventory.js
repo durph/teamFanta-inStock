@@ -9,8 +9,9 @@ import plusImg from "../../assets/Icons/SVG/Icon-add.svg";
 class Inventory extends Component {
   state = {
     inventory: [{}],
-    isModal: false
-  };
+    isModal: false,
+    clickImg:true
+  }
 
   getInventoryData() {
     Axios.get(`http://localhost:8080/inventory/`)
@@ -64,15 +65,26 @@ class Inventory extends Component {
           "No empty fields allowed. Please resubmit this form with all fields filled out unless otherwise indicated."
         );
       });
-  };
+    }
+
+  clickOn = (e) => {
+    if(!e.target.className.includes("inventory__list-entry-item-kebab-img")){
+      this.setState({clickImg:false});
+    }
+    else{
+      this.setState({clickImg:true});
+    }
+  }
+
+  update = ()=>{
+    this.getInventoryData();
+  }
 
   render() {
     return (
       <section
-        className={
-          !this.state.isModal ? "inventory" : "inventory inventory--no-scroll"
-        }
-      >
+        className={!this.state.isModal ? "inventory" : "inventory inventory--no-scroll"} 
+        onClick={this.clickOn}>
         <div className="inventory__header">
           <h1 className="inventory__header-heading">Inventory</h1>
           <input
@@ -81,7 +93,7 @@ class Inventory extends Component {
             placeholder="Search.."
           />
         </div>
-        <InventoryList inventory={this.state.inventory} />
+        <InventoryList inventory={this.state.inventory} update={this.update} clickImg={this.state.clickImg}/>
         <div
           onClick={this.addInventoryItem}
           className={
@@ -94,6 +106,7 @@ class Inventory extends Component {
             src={plusImg}
             alt="add item plus"
             className="inventory__add-item-img"
+            onClick={this.addInventoryItem}
           />
         </div>
         <NewInventoryItem
@@ -105,5 +118,6 @@ class Inventory extends Component {
     );
   }
 }
+
 
 export default Inventory;
