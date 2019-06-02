@@ -6,14 +6,23 @@ const getAllInventory = (req, res) => {
   res.json(inventory);
 };
 
-
 const postInventory = (req, res) => {
   Object.values(req.body).forEach(element => {
     if (!element) {
       return res.status(400).end();
     }
   });
-  const { name, id, description, quantity, lastOrdered, location, isInstock, categories, warehouseID } = req.body;
+  const {
+    name,
+    id,
+    description,
+    quantity,
+    lastOrdered,
+    location,
+    isInstock,
+    categories,
+    warehouseID
+  } = req.body;
   const newInvItem = {
     id,
     name,
@@ -23,7 +32,7 @@ const postInventory = (req, res) => {
     location,
     isInstock,
     categories,
-    warehouseID 
+    warehouseID
   };
   inventory.push(newInvItem);
   res.json(newInvItem);

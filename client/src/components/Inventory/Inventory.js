@@ -6,11 +6,10 @@ import InventoryList from "../InventoryList/InventoryList";
 import NewInventoryItem from "../NewInventoryItem/NewInventoryItem";
 import plusImg from "../../assets/Icons/SVG/Icon-add.svg";
 
-
 class Inventory extends Component {
   state = {
     inventory: [{}],
-    isModal: false,
+    isModal: false
   };
 
   getInventoryData() {
@@ -33,41 +32,47 @@ class Inventory extends Component {
   addInventoryItem = () => {
     this.setState({
       isModal: !this.state.isModal
-    })
+    });
   };
 
   removeModal = () => {
     this.setState({
       isModal: false
-    })
-  }
+    });
+  };
 
-  submitNewItem = (e) => {
-    let isInstock = e.target.status.value === 'on' ? true : false
+  submitNewItem = e => {
+    let isInstock = e.target.status.value === "on" ? true : false;
     e.preventDefault();
     Axios.post(`http://localhost:8080/inventory/`, {
       id: shortid.generate(),
       name: e.target.name.value,
-      description: e.target.description.value || 'no description',
+      description: e.target.description.value || "no description",
       quantity: e.target.quantity.value,
       lastOrdered: e.target.lastOrdered.value,
       location: e.target.location.value,
       isInstock: isInstock,
       categories: "Generic, Home, Supplies",
-      warehouseId: 'W0'
+      warehouseId: "W0"
     })
-        .then(res => {
-          this.getInventoryData()
-        })
-        .catch(err => {
-          console.log(err);
-          alert('No empty fields allowed. Please resubmit this form with all fields filled out unless otherwise indicated.')
-        })
-  }
+      .then(res => {
+        this.getInventoryData();
+      })
+      .catch(err => {
+        console.log(err);
+        alert(
+          "No empty fields allowed. Please resubmit this form with all fields filled out unless otherwise indicated."
+        );
+      });
+  };
 
   render() {
     return (
-      <section className={!this.state.isModal ? "inventory" : "inventory inventory--no-scroll"}>
+      <section
+        className={
+          !this.state.isModal ? "inventory" : "inventory inventory--no-scroll"
+        }
+      >
         <div className="inventory__header">
           <h1 className="inventory__header-heading">Inventory</h1>
           <input
@@ -77,15 +82,25 @@ class Inventory extends Component {
           />
         </div>
         <InventoryList inventory={this.state.inventory} />
-        <div onClick={this.addInventoryItem} className={!this.state.isModal ? "inventory__add-item" : "inventory__add-item inventory__add-item--hide"} >
-          
+        <div
+          onClick={this.addInventoryItem}
+          className={
+            !this.state.isModal
+              ? "inventory__add-item"
+              : "inventory__add-item inventory__add-item--hide"
+          }
+        >
           <img
             src={plusImg}
             alt="add item plus"
             className="inventory__add-item-img"
           />
         </div>
-        <NewInventoryItem isModal={this.state.isModal} removeModal={this.removeModal} submitNewItem={this.submitNewItem} />
+        <NewInventoryItem
+          isModal={this.state.isModal}
+          removeModal={this.removeModal}
+          submitNewItem={this.submitNewItem}
+        />
       </section>
     );
   }
