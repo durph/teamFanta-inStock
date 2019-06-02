@@ -4,7 +4,7 @@ import plusImg from "../../assets/Icons/SVG/Icon-add.svg";
 import Axios from "axios";
 import Arrow from "../../assets/Icons/SVG/Icon-arrow-right.svg"
 import WarehouseAdder from "../WarehouseAdder/WarehouseAdder.js";
-
+import WarehouseItem from "../WarehouseItem/WarehouseItem";
 
 class Warehouse extends Component {
     
@@ -48,6 +48,16 @@ class Warehouse extends Component {
         inventoryCategories:e.target.inventoryCategories
     })
   }
+  componentDidMount() {
+    Axios.get("http://localhost:8080/warehouse/")
+      .then(response => {
+        console.log(response.data);
+        this.setState({ warehouses: response.data });
+      })
+      .catch(error => {
+        console.log(error);
+      });
+  }
 
   removeModal = () => {
     this.setState({
@@ -55,15 +65,19 @@ class Warehouse extends Component {
     })
   }
 
+  addWarehouse = e => {
+    console.log(e.target);
+  };
   render() {
-    
-
     return (
-      
-       <section className="warehouse">
+      <section className="warehouse">
         <div className="warehouse__header">
-        <div className="warehouse__header-heading"> Locations </div>
-        <input type="text" className="warehouse__header-search" placeholder="Search.."/>
+          <div className="warehouse__header-heading"> Locations </div>
+          <input
+            type="text"
+            className="warehouse__header-search"
+            placeholder="Search.."
+          />
         </div>
 
         <ul className="warehouse__headings">
@@ -72,10 +86,6 @@ class Warehouse extends Component {
           <li className="warehouse__headings-list">Contact Information</li>
           <li className="warehouse__headings-list">Categories</li>
         </ul>
-        {this.state.warehouse.map(({address, contact, name, inventoryCategories} ) => {
-          console.log(address.street);
-          console.log(contact);
-          return( <>
         <div className="warehouse__info-container">
         <div className="warehouse__listing">
         <div className="warehouse__listing-nameandaddress">
@@ -98,20 +108,23 @@ class Warehouse extends Component {
         </div>
         <div className="warehouse__listing-info-product-arrow"><img src={Arrow}></img></div>
         </div>
-        </>
-        )})}
-      <>
         <h1>Hello from Warehouse</h1>
         <h2>Test ID : {this.props.match.params.warehouseId}</h2>
           <div onClick={this.addWarehouseItem} className={!this.state.isModal ? "warehouse__add-item" : "warehouse__add-item warehouse-item--hide"} >
+
+        {this.state.warehouses.map((warehouse, i) => (
+          <WarehouseItem key={i} warehouse={warehouse} />
+        ))}
+
+          <div className="warehouse__add-item">
             <img
               src={plusImg}
               alt="add item plus"
               className="warehouse__add-item-img"
-                    />
+              onClick={this.addWarehouse}
+            />
           </div>
         <WarehouseAdder isModal={this.state.isModal} removeModal={this.removeModal} submitNewWarehouse={this.submitNewWarehouse} />
-          </>
           </section>
           
     

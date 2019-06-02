@@ -25,9 +25,6 @@ const postWarehouse = (req, res) => {
   res.json(warehouses);
 };
 
-// const getWarehouses = (req, res) => {
-//   res.json(warehouses);
-// };
 
 const getWarehouseDetails = (req, res) => {
   let warehouse = warehouses.find(
@@ -46,9 +43,7 @@ const getWarehouseDetails = (req, res) => {
 };
 
 router.post("/", postWarehouse);
-// router.get("/", getWarehouse);
 router.get("/", getAllWarehouses);
-// router.get("/", getWarehouses);
 router.get("/:warehouseId", getWarehouseDetails);
 
 module.exports = router;

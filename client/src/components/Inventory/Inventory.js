@@ -10,7 +10,9 @@ class Inventory extends Component {
   state = {
     inventory: [{}],
     isModal: false,
+    clickImg:true
   };
+  
 
   getInventoryData() {
     Axios.get(`http://localhost:8080/inventory/`)
@@ -34,7 +36,18 @@ class Inventory extends Component {
       isModal: !this.state.isModal
     })
   };
+  clickOn = (e) => {
+    if(!e.target.className.includes("inventory__list-entry-item-kebab-img")){
+      this.setState({clickImg:false});
+    }
+    else{
+      this.setState({clickImg:true});
+    }
+  }
 
+  update = ()=>{
+    this.getInventoryData();
+  }
   removeModal = () => {
     this.setState({
       isModal: false
@@ -66,14 +79,6 @@ class Inventory extends Component {
   render() {
     return (
       <section className={!this.state.isModal ? "inventory" : "inventory inventory--no-scroll"}>
-        <div className="inventory__header">
-          <h1 className="inventory__header-heading">Inventory</h1>
-          <input
-            type="text"
-            className="inventory__header-search"
-            placeholder="Search.."
-          />
-        </div>
         <InventoryList inventory={this.state.inventory} />
         <div onClick={this.addInventoryItem} className={!this.state.isModal ? "inventory__add-item" : "inventory__add-item inventory__add-item--hide"} >
           
@@ -84,9 +89,12 @@ class Inventory extends Component {
           />
         </div>
         <NewInventoryItem isModal={this.state.isModal} removeModal={this.removeModal} submitNewItem={this.submitNewItem} />
+          
+        
       </section>
     );
   }
 }
+
 
 export default Inventory;

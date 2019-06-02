@@ -12,6 +12,7 @@ import Product from "./components/Product/Product.js";
 import Errors from "./components/Errors/Errors.js";
 import Header from "./components/Header/Header.js";
 import WarehouseDetails from "./components/WarehouseDetails/WarehouseDetails.js";
+import Inventoryadder from "./components/Inventoryadder/Inventoryadder.js";
 
 class App extends Component {
   render() {
@@ -27,6 +28,7 @@ class App extends Component {
           <Route exact path="/inventory/:inventoryId" component={Product} />
           <Route exact path="/warehouse" component={Warehouse} />
           <Route exact path="/inventory" component={Inventory} />
+          <Route exact path="/test" component={Inventoryadder} />
           <Route
             exact
             path="/"

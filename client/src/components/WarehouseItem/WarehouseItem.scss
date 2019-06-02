@@ -1,0 +1,135 @@
+@import "../../styles/_global-mixins.scss";
+@import "../../styles/_global-variables.scss";
+
+@include font-faces;
+
+.warehouse {
+  &__info-container {
+    display: flex;
+    justify-content: space-between;
+    border-bottom: 1px solid $divider-color;
+    padding-bottom: 1.5rem;
+    margin-bottom: 1.5rem;
+  }
+
+  &__list-link {
+    text-decoration: none;
+    color: $global-black;
+  }
+
+  &__listing {
+    @include m-h4-lists-contact-info;
+
+    &-nameandaddress {
+      &-name {
+        font-family: $font-demi-bold;
+        margin-bottom: 0.5rem;
+      }
+    }
+
+    &-info-nameandadd {
+      margin-top: 1rem;
+
+      &-position {
+        font-style: italic;
+      }
+    }
+
+    &-info-contact {
+      margin-top: 1rem;
+    }
+
+    &-info-product {
+      margin-top: 1rem;
+    }
+  }
+}
+
+///////tablet////////
+
+@include tablet {
+  .warehouse {
+    padding: 0 3vw;
+
+    &__listing {
+      width: 100%;
+    }
+
+    &__listing-info {
+      display: flex;
+      justify-content: space-between;
+      width: 100%;
+    }
+
+    &__listing-nameandaddress {
+      line-height: 0.75rem;
+      margin-bottom: 1rem;
+    }
+
+    &__listing-info-nameandadd {
+      width: 33%;
+    }
+
+    &__listing-info-contact {
+      margin-right: 0;
+      width: 33%;
+      display: flex;
+      flex-direction: column;
+    }
+
+    &__listing-info-product {
+      width: 33%;
+    }
+
+    &__listing-info-product-items {
+      width: 58%;
+    }
+  }
+}
+
+/////////desktop////////////
+
+@include desktop {
+  .warehouse {
+    padding: 0 12.5vw;
+
+    &__listing {
+      width: 100%;
+      display: flex;
+      justify-content: flex-start;
+      align-items: baseline;
+      padding-bottom: 0.5rem;
+
+      &-info {
+        width: 75%;
+      }
+
+      &-nameandaddress {
+        width: 25%;
+      }
+
+      &-info-nameandadd {
+        width: 33%;
+        margin-right: 0;
+      }
+
+      &-info-contact {
+        width: 33%;
+      }
+
+      &-info-product {
+        display: flex;
+        justify-content: flex-start;
+        width: 33%;
+
+        &-items {
+          width: 68%;
+        }
+      }
+
+      &-info-product-arrow {
+        display: flex;
+      }
+    }
+  }
+}
