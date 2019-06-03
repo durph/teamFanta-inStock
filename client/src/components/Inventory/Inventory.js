@@ -11,8 +11,7 @@ class Inventory extends Component {
     inventory: [{}],
     isModal: false,
     clickImg:true
-  };
-  
+  }
 
   getInventoryData() {
     Axios.get(`http://localhost:8080/inventory/`)
@@ -78,6 +77,19 @@ class Inventory extends Component {
         );
       });
     }
+
+  clickOn = (e) => {
+    if(!e.target.className.includes("inventory__list-entry-item-kebab-img")){
+      this.setState({clickImg:false});
+    }
+    else{
+      this.setState({clickImg:true});
+    }
+  }
+
+  update = ()=>{
+    this.getInventoryData();
+  }
 
   render() {
     return (

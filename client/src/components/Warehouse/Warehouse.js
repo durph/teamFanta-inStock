@@ -2,7 +2,7 @@ import React, { Component } from "react";
 import "./Warehouse.scss";
 import plusImg from "../../assets/Icons/SVG/Icon-add.svg";
 import Axios from "axios";
-import Arrow from "../../assets/Icons/SVG/Icon-arrow-right.svg";
+// import Arrow from "../../assets/Icons/SVG/Icon-arrow-right.svg";
 import WarehouseAdder from "../WarehouseAdder/WarehouseAdder.js";
 import WarehouseItem from "../WarehouseItem/WarehouseItem";
 
@@ -72,6 +72,8 @@ class Warehouse extends Component {
       isModal: !this.state.isModal
     })
   };
+
+  
   render() {
     return (
       <section className={!this.state.isModal ? "warehouse" : "warehouse--no-scroll"}>
