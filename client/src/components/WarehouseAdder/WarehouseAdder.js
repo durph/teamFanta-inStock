@@ -39,6 +39,10 @@ export default class WarehouseAdder extends Component {
     this.refs.formRef.reset();
   }
 
+ resetHandler = ()=> {
+     this.refs.formRef.reset();
+ }
+
   render() {
     return (
       <div ref="modal" onClick={this.clickHandler} className={this.props.isModal ? "warehouse-modal warehouse-modal--active" : "warehouse-modal"}>
@@ -82,7 +86,7 @@ export default class WarehouseAdder extends Component {
                   <textarea type="text" id="categories" className="warehouse-modal__form-textarea" placeholder="categories"required pattern =".*" />
                 </div>
                 <div className="warehouse-modal__form-btn-container">
-                  <button onClick={this.cancelHandler} className="warehouse-modal__form-btn-cancel">CANCEL</button>
+                  <button type = 'reset'onClick={this.cancelHandler} className="warehouse-modal__form-btn-cancel">CANCEL</button>
                   <button type='submit' className="warehouse-modal__form-btn-save">SAVE</button>
                 </div>
               </form>

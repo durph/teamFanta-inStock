@@ -59,6 +59,7 @@ class Warehouse extends Component {
     }).then(res=>{
         this.setState({warehouse:res.data});
     });
+        this.removeModal();
   };
 
   removeModal = () => {
@@ -95,12 +96,12 @@ class Warehouse extends Component {
           <WarehouseItem key={i} warehouse={warehouse} />
         ))}
 
-        <div className="warehouse__add-item">
+        <div onClick={this.addWarehouse} className="warehouse__add-item">
           <img
             src={plusImg}
             alt="add item plus"
             className="warehouse__add-item-img"
-            onClick={this.addWarehouse}
+            
           />
         </div>
         <WarehouseAdder
