@@ -35,7 +35,18 @@ class Inventory extends Component {
       isModal: !this.state.isModal
     });
   };
+  clickOn = (e) => {
+    if(!e.target.className.includes("inventory__list-entry-item-kebab-img")){
+      this.setState({clickImg:false});
+    }
+    else{
+      this.setState({clickImg:true});
+    }
+  }
 
+  update = ()=>{
+    this.getInventoryData();
+  }
   removeModal = () => {
     this.setState({
       isModal: false
