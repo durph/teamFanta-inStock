@@ -7,6 +7,21 @@
   width: 100%;
   padding: 0 5vw;
 
+      &--no-scroll {
+          width: 100%;
+          padding: 0 5vw;
+          overflow: hidden;
+          height: 0;
+        @include tablet {
+          height: initial;
+          padding: 0 3vw;
+        }
+        @include desktop {
+          height: initial;
+          padding: 0 12.5vw;
+        }
+      }
+
   &__header {
     margin-bottom: 2rem;
 
@@ -62,6 +77,9 @@
       right: 12.5vw;
     }
 
+    &--hide {
+      display: none;
+    }
     &-img {
       width: 1.25rem;
     }
@@ -112,5 +130,5 @@
         width: 25%;
       }
     }
-  }
+}
 }

@@ -1,0 +1,235 @@
+@import "../../styles/_global-mixins.scss";
+@import "../../styles/_global-variables.scss"; 
+@include font-faces;
+
+.inventory-modal {
+  display: none;
+  &--active {
+    display: flex;
+  }
+    height: auto;
+    width: 100%;
+    position: absolute;
+    top: 0;
+    left: 0;
+    overflow: hidden;
+  
+  
+  
+  background-color: #32323280;
+  
+  @include tablet {
+    position: fixed;
+    width: 100%;
+    height: 100%;
+    justify-content: center;
+    align-items: center;
+  }
+
+  &-container {
+    width: 100%;
+    height: auto;
+    display: flex;
+    flex-direction: column;
+    padding: 2rem 5vw;
+    background-color: white;
+
+
+
+    @include tablet {
+      width: 36rem;
+      height: auto;
+      border-radius: 4px;
+      padding: 3rem;
+    }
+
+    @include desktop {
+      padding: 3.5rem 3rem 2.5rem;
+    }
+  }
+
+  &__header {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    @include tablet {
+      flex-direction: row;
+    }
+    &-title {
+      @include m-h1-header;
+      margin: 0;
+      
+
+      @include tablet {
+        @include h1-header;
+        
+      }
+    }
+  }
+
+  &__form {
+    margin-top: 2rem;
+
+    @include tablet {
+      margin-top: 3rem;
+
+    }
+    &-inner-container {
+      display: flex;
+      flex-wrap: wrap;
+      flex-direction: column;
+      width: 100%;
+      align-items: center;
+
+      @include tablet {
+        width: unset;
+        flex-direction: row;
+        justify-content: space-between;
+        margin-bottom: 1.5rem;
+      }
+    }
+
+    &-label {
+      @include m-h5-labels;
+      width: 18rem;
+
+      @include tablet {
+        @include h5-labels;
+        width: 13.75rem;
+        order: 1;
+      }
+    
+      
+    }
+
+    &-switch {
+      &-container {
+      width: 18rem;
+      height: 3rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      
+      @include tablet {
+        width: 13.75rem;
+        order: 2;
+      }
+      }
+
+      &-text {
+        @include m-h4-paragraph;
+        pointer-events: none;
+      }
+    }
+
+    &-input {
+      @include m-h4-paragraph;
+      width: 18rem;
+      height: 3rem;
+      border: 1px solid $divider-color;
+      border-radius: 4px;
+      background-color: $text-field-background-fill;
+      text-indent: 0.5rem;
+      margin-bottom: 1.5rem;
+
+      @include tablet {
+        @include h4-paragraph-comments;
+        width: 13.75rem;
+        order: 2;
+        margin-bottom: 0;
+      }
+    }
+
+    &-dropdown {
+      
+      height: 3rem;
+      border: 1px solid $divider-color;
+      border-radius: 4px;
+      background-color: $text-field-background-fill;
+      color: $global-black;
+      @include m-h4-paragraph;
+      text-indent: 0.5rem;
+      width: 18rem;
+      margin-bottom: 1.5rem;
+
+      @include tablet {
+        width: 13.75rem;
+        margin: 0;
+        @include h4-paragraph-comments;
+        order: 2;
+      }
+     
+    }
+    &-textarea {
+      @include m-h4-paragraph;
+      
+      width: 18rem;
+      height: 5rem;
+      border: 1px solid $divider-color;
+      border-radius: 4px;
+      background-color: $text-field-background-fill;
+      text-indent: 0.5rem;
+      padding-top: 0.5rem;
+      resize: none;
+
+      @include tablet {
+        width: 100%;
+        @include h4-paragraph-comments;
+        order: 2;
+      }
+    }
+
+    &-btn {
+      &-container {
+        display: flex;
+        flex-wrap: wrap;
+        flex-direction: column;
+        width: 100%;
+        align-items: center;
+        @include tablet {
+
+          flex-direction: row;
+          justify-content: flex-end;
+        }
+
+      }
+      &-cancel,
+      &-save {
+        width: 18rem;
+        height: 3rem;
+        border: 0;
+        border-radius: 4px;
+        @include tablet {
+
+          width: 10rem;
+        }
+      }
+
+      &-save {
+        background-color: $primary-cta;
+        color: $white;
+        @include  m-h2-subheader;
+
+        @include tablet {
+          &:hover {
+            background-color: $primary-cta-hover;
+          }
+        }
+      }
+
+      &-cancel {
+        background-color: $white;
+        color: $primary-cta;
+        @include  m-h2-subheader;
+
+
+        @include tablet {
+          &:hover {
+            background-color: $text-field-background-fill;
+          }
+        }
+      }
+    }
+  }
+}
