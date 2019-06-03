@@ -96,7 +96,6 @@ class NewInventoryItem extends Component {
             <h1 className="inventory-modal__header-title">Create New</h1>
           </div>
           <form
-            ref="formRef"
             onSubmit={this.props.submitNewItem}
             className="inventory-modal__form"
           >
