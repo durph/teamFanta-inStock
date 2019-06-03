@@ -2,10 +2,9 @@ import React, { Component } from "react";
 
 class Errors extends Component {
   render() {
-    //testing routes
     return (
       <>
-        <h1>Hello from Errors</h1>
+        <h1>Error 404: This page does not exist</h1>
       </>
     );
   }

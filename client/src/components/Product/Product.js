@@ -34,7 +34,6 @@ class Product extends Component {
     let id  = this.props.match.params.inventoryId;
     axios.get(`http://localhost:8080/inventory/${id}`)
       .then(res => {
-        console.log(res);
         this.setState({item:res.data});
       })
       .catch(err => {

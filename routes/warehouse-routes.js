@@ -25,7 +25,6 @@ const postWarehouse = (req, res) => {
   res.json(warehouses);
 };
 
-
 const getWarehouseDetails = (req, res) => {
   let warehouse = warehouses.find(
     warehouse => warehouse.id === req.params.warehouseId

@@ -6,6 +6,28 @@ const getAllInventory = (req, res) => {
   res.json(inventory);
 };
 
+const postInventory = (req, res) => {
+  Object.values(req.body).forEach(element => {
+    if (!element) {
+      return res.status(400).end();
+    }
+  });
+  const { name, id, description, quantity, lastOrdered, location, isInstock, categories, warehouseID } = req.body;
+  const newInvItem = {
+    id,
+    name,
+    description,
+    quantity,
+    lastOrdered,
+    location,
+    isInstock,
+    categories,
+    warehouseID
+  };
+  inventory.push(newInvItem);
+  res.json(newInvItem);
+};
+
 const getItemById = (req, res) => {
   const foundItem = inventory.find(i => i.id === req.params.inventoryId);
   if (foundItem) {
@@ -29,6 +51,7 @@ const deleteItemById = (req, res) => {
   res.json(inventory);
 };
 
+router.post("/", postInventory);
 router.get("/:inventoryId", getItemById);
 router.get("/", getAllInventory);
 router.delete("/delete/:inventoryId", deleteItemById);

@@ -41,7 +41,7 @@ const WarehouseItem = ({
           </div>
         </div>
         <div className="warehouse__listing-info-product-arrow">
-          <img src={Arrow} />
+          <img alt="arrow-more-info" src={Arrow} />
         </div>
       </div>
     </Link>

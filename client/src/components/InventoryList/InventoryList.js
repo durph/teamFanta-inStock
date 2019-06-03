@@ -18,10 +18,6 @@ class InventoryList extends Component {
       })
   }
 
-  addInventoryItem = e => {
-    console.log(e.target);
-  };
-
   showDropDown = (e) => {
     this.setState({idToShow:e.target.id});
     this.setState({classNameToShow:e.target.className});

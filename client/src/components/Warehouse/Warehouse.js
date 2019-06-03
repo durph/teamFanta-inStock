@@ -84,6 +84,7 @@ class Warehouse extends Component {
           />
         </div>
 
+        
         <ul className="warehouse__headings">
           <li className="warehouse__headings-list">Warehouse</li>
           <li className="warehouse__headings-list">Contact</li>
