@@ -1,6 +1,5 @@
 import React, { Component } from "react";
 import "./WarehouseAdder.scss";
-import Switch from 'react-switch'
 
 
 export default class WarehouseAdder extends Component {

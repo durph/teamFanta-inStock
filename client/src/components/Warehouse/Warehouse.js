@@ -24,7 +24,6 @@ class Warehouse extends Component {
   updateWarehouse = () =>{
     Axios.get("http://localhost:8080/warehouse/")
       .then(response => {
-        console.log(response.data);
         this.setState({ warehouse: response.data });
       })
       .catch(error => {
@@ -69,7 +68,6 @@ class Warehouse extends Component {
   };
 
   addWarehouse = e => {
-    console.log(e.target);
     this.setState({
       isModal: !this.state.isModal
     })
