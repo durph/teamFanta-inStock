@@ -1,0 +1,94 @@
+@import "../../styles/_global-mixins.scss";
+@import "../../styles/_global-variables.scss";
+@include font-faces;
+
+.inventory {
+  width: 100%;
+  padding: 0 5vw;
+  margin-bottom: 2rem;
+
+  @include tablet {
+    padding: 0 3vw;
+  }
+
+  @include desktop {
+    padding: 0 12.5vw;
+  }
+
+  &--no-scroll {
+    overflow: hidden;
+    height: 0;
+    @include tablet {
+      height: initial;
+    }
+  }
+
+  &__header {
+    margin-bottom: 2rem;
+
+    @include tablet {
+      display: flex;
+      flex-wrap: wrap;
+      margin-top: 3rem;
+    }
+
+    &-heading {
+      @include m-h1-header;
+      margin: 2rem 0 1rem 0;
+
+      @include tablet {
+        @include h1-header;
+        width: 50%;
+        margin: 0;
+      }
+    }
+
+    &-search {
+      width: 80%;
+      height: 100%;
+      border-radius: 4px;
+      border: 1px $text-field-border solid;
+      background-color: $text-field-background-fill;
+      padding: 0.75rem 0.5rem 0.75rem 2.5rem;
+      word-wrap: break-word;
+      white-space: normal;
+      background: url("../../assets/Icons/SVG/Icon-search.svg") no-repeat;
+      background-position: 0.5rem 50%;
+      @include m-h4-paragraph;
+
+      @include tablet {
+        width: 30%;
+        margin-left: auto;
+        @include h4-paragraph-comments;
+      }
+    }
+  }
+
+  &__add-item {
+    background-color: $primary-cta;
+    height: 3.75rem;
+    width: 3.75rem;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: fixed;
+    right: 5vw;
+    bottom: 10%;
+    cursor: pointer;
+
+    @include tablet {
+      right: 3vw;
+    }
+
+    @include desktop {
+      right: 12.5vw;
+    }
+    &--hide {
+      display: none;
+    }
+    &-img {
+      width: 1.25rem;
+    }
+  }
+}

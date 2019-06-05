@@ -1,0 +1,108 @@
+@import "../../styles/_global-mixins.scss";
+@import "../../styles/_global-variables.scss";
+
+@include font-faces;
+
+.header {
+  &__container {
+    background-color: $nav-bg;
+    height: 100px;
+    width: 100%;
+    display: flex;
+    flex-wrap: wrap;
+  }
+
+  &__logo {
+    &-container {
+      height: 50%;
+      width: 100%;
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      align-items: center;
+      padding-top: 0.5rem;
+    }
+
+    height: 100%;
+  }
+
+  &__link {
+    &-container {
+      height: 50%;
+      width: 100%;
+      padding: 0;
+      display: flex;
+      margin: 0;
+    }
+
+    width: 50%;
+    height: 100%;
+    color: $white;
+    list-style: none;
+    font-family: $font-demi-bold;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  &__container-navlink {
+    text-decoration: none;
+    color: $white;
+    height: 100%;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    &--active {
+      border-bottom: 5px solid white;
+    }
+  }
+}
+
+@include tablet {
+  .header {
+    &__container {
+      flex-wrap: initial;
+      align-items: center;
+      height: 80px;
+      padding-left: 3vw;
+
+      &-navlink {
+        width: 55%;
+      }
+    }
+
+    &__logo-container {
+      width: 20%;
+      padding: 0;
+      justify-content: flex-start;
+    }
+
+    &__link {
+      width: 20%;
+
+      &-container {
+        height: 100%;
+        align-items: baseline;
+      }
+    }
+  }
+}
+
+@media (min-width: 1440px) {
+  .header {
+    &__container {
+      height: 80px;
+      padding-left: 0;
+    }
+
+    &__logo-container {
+      margin-left: 12.5vw;
+    }
+
+    &__link {
+      width: 15%;
+    }
+  }
+}
