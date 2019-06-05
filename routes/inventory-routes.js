@@ -5,6 +5,7 @@ const inventory = require("../data/inventory.json");
 const getAllInventory = (req, res) => {
   res.json(inventory);
 };
+
 const postInventory = (req, res) => {
   Object.values(req.body).forEach(element => {
     if (!element) {
@@ -21,10 +22,10 @@ const postInventory = (req, res) => {
     location,
     isInstock,
     categories,
-    warehouseID 
+    warehouseID
   };
   inventory.push(newInvItem);
-  res.json(inventory);
+  res.json(newInvItem);
 };
 
 const getItemById = (req, res) => {
@@ -50,9 +51,9 @@ const deleteItemById = (req, res) => {
   res.json(inventory);
 };
 
+router.post("/", postInventory);
 router.get("/:inventoryId", getItemById);
 router.get("/", getAllInventory);
-router.post("/", postInventory);
 router.delete("/delete/:inventoryId", deleteItemById);
 
 module.exports = router;

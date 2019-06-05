@@ -163,7 +163,6 @@
     }
     &-textarea {
       @include m-h4-paragraph;
-      
       width: 18rem;
       height: 5rem;
       border: 1px solid $divider-color;
@@ -172,6 +171,7 @@
       text-indent: 0.5rem;
       padding-top: 0.5rem;
       resize: none;
+      margin-bottom: 2rem;
 
       @include tablet {
         width: 100%;
@@ -210,8 +210,11 @@
         background-color: $primary-cta;
         color: $white;
         @include  m-h2-subheader;
+        order: 1;
 
         @include tablet {
+          order: unset;
+
           &:hover {
             background-color: $primary-cta-hover;
           }
@@ -222,9 +225,11 @@
         background-color: $white;
         color: $primary-cta;
         @include  m-h2-subheader;
-
+        order: 2;
 
         @include tablet {
+          order: unset;
+
           &:hover {
             background-color: $text-field-background-fill;
           }
